@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Interactive Reading Pro</title>
+
+<style>
+body {
+    font-family: "Times New Roman", serif;
+    font-size: 50px;
+    line-height: 1.1;
+    padding: 60px;
+}
+h2 {
+    color:rgb(255, 180, 127);
+    font-size: 55px;
+    text-align: center;
+}
+.sentence{
+    text-indent: 2em;
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+.line {
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.line:hover {
+    background-color: #eef;
+}
+
+.active {
+    background-color: #ffeaa7;
+}
+
+/* auto highlighted word */
+.word {
+    background: lightblue;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+/* popup */
+.popup {
+    width: auto;
+    position: absolute;
+    background: #333;
+    color: #fff;
+    padding: 1px;
+    border-radius: 6px;
+    max-height: 99vh;
+    display: none;
+    z-index: 2000;
+    font-size: 45px;
+    text-align: center; 
+    overflow-y: auto;
+}
+
+/* controls */
+.controls {
+    position: fixed;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.controls.hide {
+    transform: translate(-50%, -120%);
+}
+
+.controls button {
+    font-size: 15px;
+    padding: 10px 20px;
+    margin: 0;
+    cursor: pointer;
+    background: rgba(255,192,203,0.6);
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 6px;
+    backdrop-filter: blur(5px);
+}
+
+.controls button:hover {
+    background: rgba(255,255,255,0.5);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 10px;
+}
+th:last-child, td:last-child {
+    border-right: none;
+}
+.header-img {
+    display: block;
+    margin: 20px auto;
+    max-width: 80%;
+    border-radius: 10px;
+}
+.toc {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    background: rgba(255,255,255,0.9);
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 20px;
+    z-index: 999;
+    max-width: 250px;
+}
+.toc a {
+    text-decoration: none;
+    color: #333;
+}
+
+.toc a:hover {
+    color: orange;
+}
+html {
+    scroll-behavior: smooth;
+}
+#toggleToc {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    z-index: 1001;
+}
+
+.toc.hide {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="controls">
+    <button id="playBtn">▶ Play</button>
+    <button id="pauseBtn">⏸ Pause</button>
+</div>
+
+<div class="toc hide">
+    <h3>Table of Contents</h3>
+    <ul id="tocList">
+        <li>politics</li>
+        <li>business</li>
+    </ul>
+</div>
+<button id="toggleToc">☰</button>
+
+<h2 id="section1">Does the Iran war increase
+the risk of a Chinese attack
+on Taiwan?</h2>
+<div class="subhead">
+    China has reason to wait, but its window of opportunity has
+widened<br>
+3月 26, 2026 05:35 上午 | Taipei
+</div>
+<img src="china.png" alt="china" class="header-img">
+
+<div class="text">
+
+<div class="sentence" id="para1"> 
+Few things, in the field of international relations, are 
+more daunting for a world leader than an Oval Office 
+press conference with Donald Trump. They are often 
+bruising affairs for the visitor: Ukraine’s Volodymyr 
+Zelensky getting practically mauled for not expressing 
+enough gratitude; German Chancellor Friedrich Merz 
+being described as “difficult”; Prime Minister Mark 
+Carney having to continually reiterate that Canada is 
+not for sale. So Japan’s new Prime Minister Sanae 
+Takaichi must have sat beside Trump on March 19 
+with some trepidation. Trump, ever bullish, did not 
+disappoint when he quipped in response to a Japanese 
+journalist who asked why the U.S. had not warned 
+its allies it was going to strike Iran on February 28: 
+“Who knows better about surprise than Japan? Why 
+didn’t you tell me about Pearl Harbor?” Takaichi’s 
+expression said it all, with the comment setting the 
+tone for her three-day state visit in Washington.
+</div>
+<div class="sentence" id="para2">
+As Europe confronts the 
+unresolved shadows of empire, 
+a Belgian court has opened the 
+door to what may become the 
+continent’s most consequential 
+colonial-era criminal trial.
+Judges in Brussels ruled 
+that Count Étienne Davignon, a 
+93-year-old former Belgian diplomat, can stand trial over the 
+1961 assassination of Patrice 
+Lumumba—the first prime 
+minister of what is now the 
+Democratic Republic of Congo.</div>
+<div class="sentence" id="para3"> 
+The March 17 decision 
+marks the first time a former 
+offi cial of a European colonial 
+power will stand trial for alleged 
+criminal complicity in a political 
+assassination committed during 
+the colonial era. It came a day 
+after Spain’s King Felipe VI 
+acknowledged that his country’s 
+conquest of the Americas.
+</div>
+<div class="sentence" id="para4">
+    Lumumba, 35, was executed 
+by Katangan separatists backed 
+by Belgian interests, after being 
+overthrown just months into 
+independence. Belgium has 
+acknowledged some culpability 
+before. A 2002 parliamentary 
+inquiry concluded that the state 
+bore “moral responsibility” for 
+the circumstances leading to 
+the killing, but no one was held 
+criminally accountable.
+</div>
+
+</div>
+
+<h2 id="section2">business this week</h2>
+<div class="text">
+
+<div class="sentence" id="para3">
+The new intelligence assessment came as welcome relief to
+
+</div>
+<div class="sentence" id="para4">
+
+</div>
+</div>
+
+<div id="popup" class="popup"></div>
+
+<script>
+/* =========================
+   DICTIONARY
+========================= */
+const dictionary = {
+    "mauled": "to mangle;to attack and injure sb by tearing their flesh",
+    "trepidation":"tremor; great worry or fear about sth unpleasant that may happen",
+    "ever": "at any time / always / ever in the past / emphasizing",
+    "bullish": "optimistic",
+    "count": "Emperor → King → Prince → Duke → Marquess (Marquis) → Count (Earl) → Viscount → Baron",
+    "complicity": "collusion",
+    "culpability": "a state of guilt",
+    "a bulk of": "the (large) size or quantity of sth",
+    "4-H": "a US youth organization: Head, Heart, Hands, Health",
+    "reenactor":"a person who participates in reenactments of historical events 历史重现表演者",
+    "initiative": "the ability to decide and act on your own without waiting for sb to tell you what to do ",
+    "wowed": "to impress sb very much, especially with a performance",
+    "worthy": `<table>
+<tr><th>Word</th><th>Part of Speech</th><th>Meaning</th><th>Structure</th><th>Example</th></tr>
+<tr><td><b>worth</b></td><td>prep.</td><td>having value; deserving</td><td>be worth + noun / -ing</td><td>The book is <b>worth reading</b>.</td></tr>
+<tr><td><b>worthy</b></td><td>adj.</td><td>deserving respect or attention</td><td>be worthy of + noun</td><td>He is <b>worthy of praise</b>.</td></tr>
+<tr><td><b>worthwhile</b></td><td>adj.</td><td>worth the time, effort, or money</td><td>It is worthwhile to do / doing</td><td>It is <b>worthwhile to learn English</b>.</td></tr>
+</table>`
+};
+
+/* =========================
+   HIGHLIGHT WORDS
+========================= */
+function escapeRegex(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function wrapAndHighlight(ids) {
+    const keys = Object.keys(dictionary).sort((a,b) => b.length - a.length);
+    ids.forEach(id => {
+        const para = document.getElementById(id);
+        if (!para) return;
+
+        const sentences = para.innerText.split(/(?<=[.?!])\s+/);
+        para.innerHTML = sentences.map(sentence => {
+            // highlight dictionary words inside the sentence
+            let html = sentence;
+            keys.forEach(word => {
+                const regex = new RegExp(`(?<!\\w)${escapeRegex(word)}(?!\\w)`, "gi");
+                html = html.replace(regex, match => `<span class="word">${match}</span>`);
+            });
+            return `<span class="line">${html}</span>`;
+        }).join(" ");
+    });
+}
+
+// Apply to all paragraphs
+wrapAndHighlight(["para1","para2","para3","para4"]);
+
+/* =========================
+   POPUP + SPEECH
+========================= */
+const popup = document.getElementById("popup");
+let currentUtterance = null;
+let currentElement = null;
+let isPaused = false;
+
+document.addEventListener("click", function(e) {
+    // word popup
+    if (e.target.classList.contains("word")) {
+        e.stopPropagation();
+
+        let rawText = e.target.innerText.replace(/[^\w\- ]/g, '').trim();
+        let meaning = dictionary[rawText];
+        if (!meaning) {
+            let key = Object.keys(dictionary).find(k => k.toLowerCase()===rawText.toLowerCase());
+            meaning = key ? dictionary[key] : "No definition";
+        }
+
+        popup.innerHTML = meaning;
+        popup.style.display = "block";
+
+        let x = e.pageX;
+        let y = e.pageY;
+        let rect = popup.getBoundingClientRect();
+
+        if (x + rect.width > window.innerWidth) x = window.innerWidth - rect.width - 10;
+        if (y + rect.height > window.innerHeight + window.scrollY) y = y - rect.height - 10;
+
+        popup.style.left = x + "px";
+        popup.style.top = y + "px";
+        return;
+    }
+
+    // sentence click for speech
+    const el = e.target.closest(".line");
+    if (el) {
+        let text = el.innerText;
+
+        if (currentElement === el && currentUtterance) {
+            if (!isPaused) {
+                speechSynthesis.pause();
+                isPaused = true;
+            } else {
+                speechSynthesis.resume();
+                isPaused = false;
+            }
+            return;
+        }
+
+        speechSynthesis.cancel();
+        document.querySelectorAll(".line").forEach(s => s.classList.remove("active"));
+        el.classList.add("active");
+
+        currentElement = el;
+        currentUtterance = new SpeechSynthesisUtterance(text);
+        currentUtterance.rate = 0.9;
+
+        currentUtterance.onend = () => {
+            el.classList.remove("active");
+            currentElement = null;
+        };
+
+        speechSynthesis.speak(currentUtterance);
+        isPaused = false;
+        return;
+    }
+
+    // click outside → hide popup
+    popup.style.display = "none";
+});
+
+/* =========================
+   CONTROLS
+========================= */
+document.getElementById("playBtn").onclick = () => speechSynthesis.resume();
+document.getElementById("pauseBtn").onclick = () => speechSynthesis.pause();
+
+let lastScrollTop = 0;
+let threshold = 10;
+
+window.addEventListener("scroll", function () {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    let controls = document.querySelector(".controls");
+
+    if (currentScroll > lastScrollTop + threshold) {
+        controls.classList.add("hide");
+    } else if (currentScroll < lastScrollTop - threshold) {
+        controls.classList.remove("hide");
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
+
+/* =========================
+   TABLE OF CONTENTS
+========================= */
+const tocList = document.getElementById("tocList");
+const headings = document.querySelectorAll("h2");
+
+headings.forEach((h, index) => {
+    if (!h.id) h.id = "section" + (index + 1);
+    let li = document.createElement("li");
+    let a = document.createElement("a");
+    a.href = "#" + h.id;
+    a.textContent = h.innerText;
+    li.appendChild(a);
+    tocList.appendChild(li);
+});
+
+document.getElementById("toggleToc").onclick = () => {
+    document.querySelector(".toc").classList.toggle("hide");
+};
+
+window.addEventListener("scroll", () => {
+    let fromTop = window.scrollY;
+    document.querySelectorAll(".toc a").forEach(link => {
+        let section = document.querySelector(link.hash);
+        if (!section) return;
+
+        if (section.offsetTop <= fromTop + 100 &&
+            section.offsetTop + section.offsetHeight > fromTop + 100) {
+            link.style.color = "red";
+        } else {
+            link.style.color = "#333";
+        }
+    });
+});
+</script>
+
+</body>
+</html>
