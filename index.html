@@ -1,0 +1,2675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,
+                   maximum-scale=1.0, user-scalable=no">
+
+    <title>English Quiz</title>
+
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f4f7;
+    color: #202124;
+
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+}
+
+
+/* ==========================================
+   MAIN QUIZ CONTAINER
+   ========================================== */
+
+.quiz {
+    width: 100%;
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    padding:
+        max(18px, env(safe-area-inset-top))
+        16px
+        max(40px, env(safe-area-inset-bottom));
+}
+
+
+/* ==========================================
+   PROGRESS
+   ========================================== */
+
+#progress {
+    font-size: 16px;
+    line-height: 1.4;
+
+    color: #6b7280;
+
+    margin-bottom: 8px;
+
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   SCORE
+   ========================================== */
+
+#score {
+    font-size: 19px;
+    line-height: 1.4;
+
+    color: #1f2937;
+
+    font-weight: bold;
+
+    margin-bottom: 26px;
+}
+
+
+/* ==========================================
+   QUESTION
+   ========================================== */
+
+#question {
+    font-size: 22px;
+    line-height: 1.55;
+
+    font-weight: 700;
+
+    color: #111827;
+
+    margin-bottom: 25px;
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+
+/* ==========================================
+   OPTIONS
+   ========================================== */
+
+#options {
+    width: 100%;
+}
+
+.option {
+    display: block;
+
+    width: 92%;
+    margin-left: 0;
+    
+
+    min-height: 58px;
+
+    padding: 15px 17px;
+
+    margin-bottom: 13px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 1.35;
+
+    text-align: left;
+
+    color: #1f2937;
+
+    background: #ffffff;
+
+    border: 2px solid #d1d5db;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    touch-action: manipulation;
+
+    -webkit-appearance: none;
+
+    transition:
+        background-color 0.15s,
+        border-color 0.15s,
+        transform 0.1s;
+}
+
+
+/* Touch feedback */
+
+.option:active {
+    background: #eef2ff;
+    transform: scale(0.99);
+}
+
+
+/* Correct answer */
+
+.option.correct {
+    color: #166534;
+
+    background: #dcfce7;
+
+    border-color: #22c55e;
+}
+
+
+/* Wrong answer */
+
+.option.wrong {
+    color: #991b1b;
+
+    background: #fee2e2;
+
+    border-color: #ef4444;
+}
+
+
+/* ==========================================
+   FEEDBACK
+   ========================================== */
+
+#feedback {
+    min-height: 30px;
+
+    margin-top: 18px;
+
+    font-size: 19px;
+    line-height: 1.4;
+
+    font-weight: bold;
+
+    color: #374151;
+}
+
+
+/* ==========================================
+   NAVIGATION
+   ========================================== */
+
+.navigation {
+    display: flex;
+
+    justify-content: flex-start;
+
+    gap: 12px;
+
+    margin-top: 12px;
+
+    width: 100%;
+}
+
+.navigation button {
+    flex: 0 0 auto;
+
+    min-width: 125px;
+    min-height: 54px;
+
+    padding: 14px 18px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    border: none;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    touch-action: manipulation;
+}
+
+
+/* Previous */
+
+#prevButton {
+    color: #374151;
+    background: #e5e7eb;
+}
+
+
+/* Next, if used later */
+
+#nextButton {
+    color: white;
+    background: #2563eb;
+}
+
+
+/* Remove old unused button rules */
+
+#prevBtn,
+#nextBtn {
+    width: auto;
+    height: auto;
+}
+
+
+.navigation button:active {
+    transform: scale(0.98);
+}
+
+
+.navigation button:disabled {
+    opacity: 0.45;
+    cursor: default;
+}
+
+
+/* ==========================================
+   FINAL RESULT
+   ========================================== */
+
+#result {
+    width: 100%;
+
+    text-align: center;
+
+    font-size: 23px;
+
+    font-weight: bold;
+
+    color: #111827;
+
+    margin-top: 45px;
+
+    line-height: 1.7;
+
+    overflow-wrap: break-word;
+}
+
+
+/* ==========================================
+   RESTART BUTTON
+   ========================================== */
+
+#restartButton {
+    display: none;
+
+    width: 100%;
+
+    max-width: 400px;
+
+    min-height: 56px;
+
+    margin: 30px auto 0;
+
+    padding: 15px 18px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    color: white;
+
+    background: #2563eb;
+
+    border: none;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    touch-action: manipulation;
+}
+
+
+#restartButton:active {
+    background: #1d4ed8;
+
+    transform: scale(0.98);
+}
+
+
+/* ==========================================
+   INFO POPUP
+   ========================================== */
+
+#infoOverlay {
+    display: none;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(17, 24, 39, 0.55);
+
+    align-items: flex-end;
+    justify-content: center;
+
+    padding:
+        12px
+        12px
+        max(12px, env(safe-area-inset-bottom));
+
+    z-index: 1000;
+}
+
+
+#infoOverlay.visible {
+    display: flex;
+}
+
+
+/* ==========================================
+   INFO BOX
+   ========================================== */
+
+#infoBox {
+    width: 100%;
+
+    max-width: 520px;
+
+    max-height: 78vh;
+
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    padding: 22px 20px;
+
+    margin: 0;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ==========================================
+   POPUP WORD
+   ========================================== */
+
+#infoWord {
+    font-size: 24px;
+
+    line-height: 1.3;
+
+    font-weight: 700;
+
+    color: #111827;
+
+    margin-bottom: 14px;
+
+    overflow-wrap: break-word;
+}
+
+
+/* ==========================================
+   POPUP MEANING
+   ========================================== */
+
+#infoMeaning {
+    font-size: 20px;
+
+    line-height: 1.55;
+
+    color: #1f2937;
+
+    margin-bottom: 15px;
+
+    overflow-wrap: break-word;
+}
+
+
+#infoMeaning span.label {
+    font-weight: bold;
+
+    color: #374151;
+}
+
+
+/* ==========================================
+   POPUP EXAMPLE
+   ========================================== */
+
+#infoExample {
+    font-size: 17px;
+
+    line-height: 1.55;
+
+    color: #4b5563;
+
+    font-style: italic;
+
+    margin-bottom: 20px;
+
+    overflow-wrap: break-word;
+}
+
+
+#infoExample span.label {
+    font-weight: bold;
+
+    font-style: normal;
+
+    color: #374151;
+}
+
+
+/* ==========================================
+   GOT IT BUTTON
+   ========================================== */
+
+#infoCloseButton {
+    width: 100%;
+
+    min-height: 54px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    color: white;
+
+    background: #2563eb;
+
+    border: none;
+
+    border-radius: 11px;
+
+    cursor: pointer;
+
+    touch-action: manipulation;
+}
+
+
+#infoCloseButton:active {
+    background: #1d4ed8;
+
+    transform: scale(0.98);
+}
+
+
+/* ==========================================
+   SMALL ANDROID PHONES
+   ========================================== */
+
+@media (max-width: 380px) {
+
+    .quiz {
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+
+    #question {
+        font-size: 20px;
+        line-height: 1.5;
+    }
+
+    .option {
+        font-size: 17px;
+        min-height: 60px;
+        padding: 16px;
+    }
+
+    #score {
+        font-size: 18px;
+    }
+
+    #progress {
+        font-size: 15px;
+    }
+
+    #infoBox {
+        padding: 20px 17px;
+        max-height: 80vh;
+    }
+
+    #infoWord {
+        font-size: 22px;
+    }
+
+    #infoMeaning {
+        font-size: 17px;
+    }
+
+    #infoExample {
+        font-size: 16px;
+    }
+}
+
+
+/* ==========================================
+   TABLET / LARGE SCREEN
+   ========================================== */
+
+@media (min-width: 600px) {
+
+    .quiz {
+        padding-top: 35px;
+    }
+
+    #question {
+        font-size: 25px;
+    }
+
+    .option {
+        font-size: 20px;
+        min-height: 64px;
+    }
+
+    #infoBox {
+        max-width: 500px;
+    }
+}
+
+
+/* ==========================================
+   LANDSCAPE PHONE
+   ========================================== */
+
+@media (max-height: 500px) and (orientation: landscape) {
+
+    .quiz {
+        padding-top: 12px;
+        padding-bottom: 25px;
+    }
+
+    #score {
+        margin-bottom: 15px;
+    }
+
+    #question {
+        margin-bottom: 15px;
+    }
+
+    .option {
+        min-height: 50px;
+        padding: 12px 16px;
+        margin-bottom: 9px;
+    }
+
+    #infoBox {
+        max-height: 90vh;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="quiz">
+
+    <div id="progress"></div>
+
+    <div id="score"></div>
+
+    <div id="question"></div>
+
+    <div id="options"></div>
+
+    <div id="feedback"></div>
+
+    <div class="navigation">
+        <button id="prevButton" onclick="previousQuestion()">Previous</button>
+    </div>
+
+    <div id="result"></div>
+
+    <button id="restartButton" onclick="restartQuiz()">
+        Restart from Question 1
+    </button>
+
+</div>
+
+<!-- Popup shown when the wrong answer is chosen -->
+<div id="infoOverlay" onclick="if(event.target===this) closeInfo()">
+    <div id="infoBox">
+        <div id="infoWord"></div>
+        <div id="infoMeaning"></div>
+        <div id="infoExample"></div>
+        <button id="infoCloseButton" onclick="closeInfo()">Got it</button>
+    </div>
+</div>
+
+<script>
+const vocabulary = {
+
+    savour: {
+        meaning: "taste; flavor; enjoyment; relish; appreciate; show signs or traces",
+        example: "She savoured every mouthful of the delicious meal."
+    },
+
+    saxophone: {
+        meaning: "a musical instrument played by blowing into a mouthpiece",
+        example: "He plays the saxophone in the university jazz band."
+    },
+
+    scab: {
+        meaning: "a dry crust that forms over a wound; a person who refuses to join a strike or union",
+        example: "A scab had formed over the cut on his knee."
+    },
+
+    scaffold: {
+        meaning: "a temporary structure used by workers when building or repairing a building; a structure used for hanging people",
+        example: "Workers were standing on the scaffold outside the building."
+    },
+
+    scallop: {
+        meaning: "a shellfish with two fan-shaped shells; a decorative edge with a series of curves",
+        example: "We ordered grilled scallops for dinner."
+    },
+
+    scalpel: {
+        meaning: "a small, very sharp knife used by doctors or surgeons",
+        example: "The surgeon carefully picked up the scalpel."
+    },
+
+    scaremonger: {
+        meaning: "a person who spreads alarming or panic-inducing news or rumors",
+        example: "The minister accused the newspaper of being a scaremonger."
+    },
+
+    scary: {
+        meaning: "frightening or causing fear",
+        example: "It was scary to walk home alone in the dark."
+    },
+
+    scathing: {
+        meaning: "extremely critical or severe",
+        example: "The newspaper published a scathing review of the new film."
+    },
+
+    scatterbrain: {
+        meaning: "a person who is forgetful and unable to concentrate",
+        example: "I'm such a scatterbrain that I forgot where I had parked the car."
+    },
+
+    scavenge: {
+        meaning: "to search for and collect useful things that have been thrown away",
+        example: "The birds scavenged for food among the rubbish."
+    },
+
+    scenario: {
+        meaning: "a possible situation or sequence of events; a script or outline",
+        example: "In the worst-case scenario, we may have to cancel the trip."
+    },
+
+    schema: {
+        meaning: "a diagram or outline that shows how something is organized",
+        example: "The students used a simple schema to understand the structure of the argument."
+    },
+
+    schematize: {
+        meaning: "to represent or organize something in the form of a plan or diagram",
+        example: "The researcher schematized the process in a series of diagrams."
+    },
+
+    schizophrenia: {
+        meaning: "a serious mental disorder that affects a person's thoughts, feelings, and behavior",
+        example: "The documentary explored how schizophrenia can affect a person's daily life."
+    },
+
+    scholastic: {
+        meaning: "related to school or education; academic",
+        example: "She received several awards for her scholastic achievements."
+    },
+
+    scintillation: {
+        meaning: "brilliance or liveliness, especially of intelligence; sparkling or flashing light",
+        example: "The audience was impressed by the scintillation of his conversation."
+    },
+
+    scoff: {
+        meaning: "to mock or ridicule someone or something; to eat something quickly or greedily",
+        example: "He scoffed at the idea that the plan could succeed."
+    },
+
+    scowl: {
+        meaning: "to look at someone angrily with a frown",
+        example: "She scowled at him when he interrupted her."
+    },
+
+    scrawl: {
+        meaning: "to write or draw something in a careless, messy way",
+        example: "He scrawled his name on the back of the envelope."
+    },
+
+    sallow: {
+        meaning: "yellowish or pale in color, especially because of illness",
+        example: "His face looked sallow after several days of illness."
+    },
+
+    salutary: {
+        meaning: "having a helpful or beneficial effect",
+        example: "The experience had a salutary effect on his attitude toward work."
+    },
+
+    salvage: {
+        meaning: "to rescue people or property from danger; to recover or reuse something that would otherwise be lost or wasted",
+        example: "The crew managed to salvage several valuable items from the wreck."
+    },
+
+    salvo: {
+        meaning: "a simultaneous firing of several guns; a sudden burst of cheers or applause",
+        example: "The speech was greeted with a salvo of applause."
+    },
+
+    samba: {
+        meaning: "a Brazilian dance or style of music",
+        example: "They spent the evening dancing the samba."
+    },
+
+    sanctification: {
+        meaning: "the act of making something holy; the act of making something acceptable or justified",
+        example: "The ceremony marked the sanctification of the new church."
+    },
+
+    sanctify: {
+        meaning: "to make something holy; to make something acceptable or legitimate",
+        example: "The ceremony was held to sanctify the new building."
+    },
+
+    sanctuary: {
+        meaning: "a holy or sacred place; a place of safety or protection; a place where animals are protected",
+        example: "The wildlife sanctuary provides a safe home for injured animals."
+    },
+
+    sanctum: {
+        meaning: "a sacred or private place; a private room or study",
+        example: "Only a few close friends were allowed into his private sanctum."
+    },
+
+    sanguine: {
+        meaning: "optimistic, hopeful, or cheerful; having a healthy reddish complexion",
+        example: "Despite the difficulties, she remained sanguine about the future."
+    },
+
+    sap: {
+        meaning: "a liquid in plants that carries water and nutrients; to weaken or undermine something gradually",
+        example: "The long journey had sapped all his energy."
+    },
+
+    sardonic: {
+        meaning: "showing mocking or cynical humor",
+        example: "He gave a sardonic smile when he heard the excuse."
+    },
+
+    sarong: {
+        meaning: "a long piece of cloth worn around the body, especially by people in Southeast Asia",
+        example: "She wore a colorful sarong on the beach."
+    },
+
+    sartorial: {
+        meaning: "related to clothing, especially men's clothing",
+        example: "He is known for his impeccable sartorial style."
+    },
+
+    sash: {
+        meaning: "a long band of cloth worn around the waist or across the body; the frame of a window that holds the glass",
+        example: "She wore a red sash around her waist."
+    },
+
+    satiate: {
+        meaning: "to satisfy a desire or appetite completely; to make someone feel completely satisfied or tired of something",
+        example: "The large meal completely satiated his appetite."
+    },
+
+    satiation: {
+        meaning: "the state of being completely satisfied, especially after eating; the feeling of being tired of something",
+        example: "The feeling of satiation came after a large meal."
+    },
+
+    satyr: {
+        meaning: "a creature in Greek and Roman mythology that was part human and part goat; a man with very strong sexual desires",
+        example: "The ancient vase depicts a satyr dancing in the forest."
+    },
+
+    savagery: {
+        meaning: "extremely cruel or violent behavior",
+        example: "The attack was carried out with shocking savagery."
+    },
+
+    savant: {
+        meaning: "a highly knowledgeable or learned person",
+        example: "The young computer savant developed the program in just a few weeks."
+    },
+
+    sedan: {
+        meaning: "a car with four doors and a separate trunk",
+        example: "She drives a small sedan to work every day."
+    },
+
+    sedative: {
+        meaning: "a drug or medicine that makes a person calm or sleepy",
+        example: "The doctor gave him a mild sedative before the procedure."
+    },
+
+    seduce: {
+        meaning: "to persuade someone to have sex with you; to tempt or attract someone into doing something",
+        example: "The advertisements are designed to seduce consumers into buying unnecessary products."
+    },
+
+    seduction: {
+        meaning: "the act of persuading someone to have sex with you; the power to attract or tempt someone",
+        example: "The novel explores the seduction of wealth and power."
+    },
+
+    seductive: {
+        meaning: "attractive or tempting, especially in a sexual way",
+        example: "The restaurant offered a seductive combination of good food and live music."
+    },
+
+    seedy: {
+        meaning: "dirty, shabby, or run-down; looking or feeling unhealthy",
+        example: "The hotel was in a seedy part of town."
+    },
+
+    seep: {
+        meaning: "to flow slowly through small holes or spaces",
+        example: "Water began to seep through the cracks in the wall."
+    },
+
+    seethe: {
+        meaning: "to boil or bubble; to be extremely angry or excited; to be full of activity or movement",
+        example: "She was seething with anger after hearing the accusation."
+    },
+
+    segregate: {
+        meaning: "to separate people or things; to treat people unfairly by keeping them separate from others",
+        example: "The policy was designed to segregate students according to their background."
+    },
+
+    segregation: {
+        meaning: "the act of separating people or things; especially the separation of racial groups",
+        example: "The country eventually abolished racial segregation."
+    },
+
+    selenium: {
+        meaning: "a chemical element",
+        example: "Selenium is a trace element that the human body needs in small amounts."
+    },
+
+    "self-annihilation": {
+        meaning: "the destruction of oneself; complete self-destruction",
+        example: "The novel portrays the character's obsession with self-annihilation."
+    },
+
+    "self-effacing": {
+        meaning: "not trying to attract attention or praise; modest and humble",
+        example: "Despite his success, he remained remarkably self-effacing."
+    },
+
+    "self-fulfilling": {
+        meaning: "becoming true because people expect it to become true or act in ways that make it true",
+        example: "His fear of failure became a self-fulfilling prophecy."
+    },
+
+    "self-made": {
+        meaning: "successful because of one's own efforts rather than family wealth or influence",
+        example: "He is a self-made businessman who started his company with very little money."
+    },
+
+    "self-opinionated": {
+        meaning: "having very strong opinions and believing that one's own opinions are always right",
+        example: "His self-opinionated manner made it difficult for others to work with him."
+    },
+
+    "self-possessed": {
+        meaning: "calm and confident, especially in a difficult situation",
+        example: "She remained self-possessed throughout the difficult interview."
+    },
+
+    "self-preservation": {
+        meaning: "the instinct or effort to protect oneself from danger or harm",
+        example: "Fear is often a natural response driven by self-preservation."
+    },
+
+    "self-restraint": {
+        meaning: "the ability to control one's feelings, desires, or actions",
+        example: "It took considerable self-restraint not to respond angrily."
+    },
+
+    "self-styled": {
+        meaning: "describing someone who gives themselves a particular name, title, or position",
+        example: "He is a self-styled expert on ancient history."
+    },
+
+    "self-willed": {
+        meaning: "determined to do what one wants, even when others disagree",
+        example: "The self-willed child refused to change her decision."
+    },
+
+    semantic: {
+        meaning: "related to the meaning of words or language",
+        example: "The researchers found a semantic difference between the two expressions."
+    },
+
+    semantics: {
+        meaning: "the study of the meanings of words and sentences",
+        example: "She is studying semantics as part of her linguistics course."
+    },
+
+    semblance: {
+        meaning: "the appearance or outward form of something; a slight similarity",
+        example: "After several hours of discussion, the meeting finally reached a semblance of order."
+    },
+
+    seminal: {
+        meaning: "having a strong influence on the later development of something",
+        example: "The book was a seminal work in the field of modern linguistics."
+    },
+
+    senatorial: {
+        meaning: "related to a senate or senator",
+        example: "The committee discussed the bill during a senatorial hearing."
+    },
+
+    senile: {
+        meaning: "showing the mental or physical decline associated with old age",
+        example: "The novel portrays an elderly man who is becoming increasingly senile."
+    },
+
+    sensor: {
+        meaning: "a device that detects and measures changes in the environment",
+        example: "The sensor automatically turns on the lights when someone enters the room."
+    },
+
+    senility: {
+        meaning: "the physical or mental decline associated with old age",
+        example: "The novel describes his gradual decline into senility."
+    },
+
+    sentinel: {
+        meaning: "a person or soldier who guards a place",
+        example: "A lone sentinel stood at the entrance to the fortress."
+    },
+
+    sentry: {
+        meaning: "a guard or soldier who watches and protects a place",
+        example: "The sentry stood outside the palace gates."
+    },
+
+    separatist: {
+        meaning: "a person who wants a region or group to become independent from a larger country or organization",
+        example: "The separatist movement called for greater political independence."
+    },
+
+    sepulchre: {
+        meaning: "a tomb or burial place",
+        example: "The ancient king was laid to rest in a stone sepulchre."
+    },
+
+    sequel: {
+        meaning: "a result or consequence; a story, film, or book that continues an earlier one",
+        example: "The studio announced plans for a sequel to the popular film."
+    },
+
+    serenade: {
+        meaning: "a piece of music performed for or in honor of someone",
+        example: "The musicians played a romantic serenade beneath her window."
+    },
+
+    serf: {
+        meaning: "a person who was legally tied to a piece of land and forced to work for its owner; a person treated like a slave",
+        example: "The peasants were treated as serfs by the landowner."
+    },
+
+    serrated: {
+        meaning: "having an edge with a series of sharp points like a saw",
+        example: "Use a serrated knife to cut the bread cleanly."
+    },
+
+    serum: {
+        meaning: "the clear liquid part of blood; a liquid used for medical treatment or containing antibodies",
+        example: "The doctor took a blood sample to test the serum."
+    },
+
+    serviceable: {
+        meaning: "usable and suitable for a particular purpose; strong enough to be used for a long time",
+        example: "The old car is still serviceable despite its age."
+    },
+
+    servile: {
+        meaning: "too willing to obey or serve someone; lacking independence or dignity",
+        example: "He was criticized for his servile attitude toward his employer."
+    },
+
+    servility: {
+        meaning: "excessive willingness to obey or serve someone",
+        example: "The dictator expected complete servility from his officials."
+    },
+
+    servitude: {
+        meaning: "the condition of being forced to work for and obey another person",
+        example: "The prisoners were kept in conditions of virtual servitude."
+    },
+
+    "set-piece": {
+        meaning: "a carefully planned scene or part of a novel, film, play, or other work",
+        example: "The opening battle is the most spectacular set-piece in the film."
+    },
+
+    setter: {
+        meaning: "a type of long-haired hunting dog",
+        example: "The Irish setter ran across the field after the bird."
+    },
+
+    severity: {
+        meaning: "the quality of being very serious or strict; extreme intensity; harsh punishment or difficult conditions",
+        example: "The severity of the storm forced the airport to close."
+    },
+
+    sexism: {
+        meaning: "unfair treatment or prejudice based on a person's sex or gender",
+        example: "The organization has introduced new policies to combat sexism in the workplace."
+    },
+
+    sexist: {
+        meaning: "a person who has sexist beliefs; showing prejudice based on sex or gender",
+        example: "The company was criticized for making sexist comments about female employees."
+    },
+
+    shack: {
+        meaning: "a small, simple, poorly built house or shelter",
+        example: "They lived in a small wooden shack near the beach."
+    },
+
+    shaggy: {
+        meaning: "having long, thick, untidy hair or fur",
+        example: "The dog had long, shaggy fur."
+    },
+
+    shag: {
+        meaning: "a cormorant, a type of sea bird",
+        example: "A shag was sitting on a rock with its wings spread wide."
+    },
+
+    shamble: {
+        meaning: "to walk slowly and awkwardly, dragging one's feet",
+        example: "The tired man shambled slowly down the street."
+    },
+
+    shanghai: {
+        meaning: "to trick or force someone into doing something; to kidnap someone and force them to work as a sailor",
+        example: "The sailors claimed that they had been shanghaied into working on the ship."
+    },
+
+    shapely: {
+        meaning: "having an attractive and well-proportioned shape",
+        example: "The dress was designed to flatter a shapely figure."
+    },
+
+    shatter: {
+        meaning: "to break or destroy something into many small pieces",
+        example: "The ball hit the window and shattered the glass."
+    },
+
+    sheaf: {
+        meaning: "a bundle of grain, papers, or other things tied together",
+        example: "He carried a sheaf of papers into the meeting."
+    },
+
+    shear: {
+        meaning: "to cut the wool off a sheep; to break or cut something suddenly",
+        example: "The farmer sheared the sheep in early summer."
+    },
+
+    sheath: {
+        meaning: "a protective cover for a knife or sword; a condom",
+        example: "He returned the sword carefully to its sheath."
+    },
+
+    sheen: {
+        meaning: "a soft shine or glow on the surface of something",
+        example: "The table had a beautiful sheen after it was polished."
+    },
+
+    sheikh: {
+        meaning: "an Arab leader or chief; a Muslim religious leader",
+        example: "The sheikh welcomed the visiting delegation."
+    },
+
+    shimmer: {
+        meaning: "to shine with a soft, flickering light",
+        example: "The surface of the lake shimmered in the sunlight."
+    },
+
+    shin: {
+        meaning: "the front part of the lower leg; meat from the lower leg of an animal",
+        example: "He hit his shin against the edge of the table."
+    },
+
+    shirk: {
+        meaning: "to avoid work, responsibility, or a duty, especially because of laziness or fear",
+        example: "You cannot shirk your responsibilities and expect others to do your work."
+    },
+
+    shoal: {
+        meaning: "a large group of fish; a shallow area of water, especially one with sand or rocks",
+        example: "A large shoal of fish moved beneath the boat."
+    },
+
+    shoddy: {
+        meaning: "of poor quality or badly made",
+        example: "The customers complained about the shoddy workmanship."
+    },
+
+    shortfall: {
+        meaning: "an amount that is less than what is needed or expected",
+        example: "The project faces a serious shortfall in funding."
+    },
+
+    shove: {
+        meaning: "to push someone or something roughly",
+        example: "Someone shoved him from behind as he entered the train."
+    },
+
+    shred: {
+        meaning: "a small amount or piece; to tear or cut something into small pieces",
+        example: "She tore the letter into tiny shreds."
+    },
+
+    shrew: {
+        meaning: "a small mouse-like animal that eats insects; an unpleasant, bad-tempered woman",
+        example: "A tiny shrew disappeared into the grass."
+    },
+
+    shrinkage: {
+        meaning: "a reduction in size, especially because of heat, moisture, or use",
+        example: "The sweater may suffer some shrinkage when washed."
+    },
+
+    shrivel: {
+        meaning: "to become or make something smaller, drier, and wrinkled",
+        example: "The leaves began to shrivel in the summer heat."
+    },
+
+    shroud: {
+        meaning: "a cloth used to cover a dead body; something that covers or hides something; to cover or hide",
+        example: "The mountains were shrouded in mist."
+    },
+
+    shrubbery: {
+        meaning: "an area of land covered with shrubs",
+        example: "The house was surrounded by thick shrubbery."
+    },
+
+    shrubby: {
+        meaning: "covered with or consisting of shrubs",
+        example: "The landscape was dry and shrubby."
+    },
+
+    shuffle: {
+        meaning: "to walk without lifting one's feet properly; to mix or rearrange things",
+        example: "He shuffled slowly across the room in his slippers."
+    },
+
+    shun: {
+        meaning: "to deliberately avoid someone or something",
+        example: "After the disagreement, she shunned his company for several weeks."
+    },
+
+    shunt: {
+        meaning: "to move a train onto another track; to move or transfer something to another place or position",
+        example: "The railway workers shunted the train onto a different track."
+    },
+
+    sibling: {
+        meaning: "a brother or sister",
+        example: "She has two older siblings."
+    },
+
+    sic: {
+        meaning: "used in a quotation to show that an unusual or incorrect word was in the original text",
+        example: "The article described him as a 'succesful' businessman [sic]."
+    },
+
+    sickbay: {
+        meaning: "a room or small hospital for sick people, especially on a ship or at a boarding school",
+        example: "The injured sailor was taken to the ship's sickbay."
+    },
+
+    sickening: {
+        meaning: "causing disgust; making someone feel sick or extremely unpleasant",
+        example: "The smell from the abandoned building was sickening."
+    },
+
+    sideline: {
+        meaning: "the line marking the side of a sports field; a job or activity done in addition to one's main work",
+        example: "The coach stood on the sideline watching the game."
+    },
+
+    sidestep: {
+        meaning: "to move aside to avoid something; to avoid dealing with a problem or question",
+        example: "The politician tried to sidestep the question."
+    },
+
+    sidle: {
+        meaning: "to move quietly or cautiously sideways or closer to someone",
+        example: "He sidled up to me and whispered something in my ear."
+    },
+
+    sierra: {
+        meaning: "a mountain range with a jagged or saw-like outline",
+        example: "The Sierra Nevada attracts visitors throughout the year."
+    },
+
+    sighting: {
+        meaning: "an occasion when someone or something is seen",
+        example: "There have been several sightings of the rare bird in the area."
+    },
+
+    signet: {
+        meaning: "a small seal or stamp used as a personal mark",
+        example: "The letter was sealed with his family signet."
+    },
+
+    silage: {
+        meaning: "grass or other green plants preserved as animal food",
+        example: "The farmer stored the silage in a large silo."
+    },
+
+    silhouette: {
+        meaning: "a dark shape or outline of a person or object seen against a lighter background",
+        example: "Her silhouette was clearly visible against the sunset."
+    },
+
+    silica: {
+        meaning: "a chemical substance found in sand, rocks, and glass",
+        example: "Silica is one of the main components of sand."
+    },
+
+    silo: {
+        meaning: "a tall structure used for storing grain or other materials; an underground structure for storing missiles",
+        example: "The farm has several large silos for storing grain."
+    },
+
+    silt: {
+        meaning: "fine sand, mud, or other material carried by water and deposited at the bottom of rivers or lakes",
+        example: "The river carries large amounts of silt downstream."
+    },
+
+    simmer: {
+        meaning: "to cook gently in liquid just below boiling point; to contain or develop strong emotions; to be close to becoming violent",
+        example: "Let the soup simmer for ten minutes before serving."
+    },
+
+    simpleton: {
+        meaning: "a person who is not intelligent or is easily fooled",
+        example: "He was portrayed as a simpleton who believed everything he was told."
+    },
+
+    simulate: {
+        meaning: "to pretend to have or feel something; to imitate or reproduce the behavior of something",
+        example: "The computer program simulates the conditions of a real flight."
+    },
+
+    sinew: {
+        meaning: "a tendon; a source of strength or power",
+        example: "The factory was once the sinew of the local economy."
+    },
+
+    singe: {
+        meaning: "to burn something slightly, usually damaging only the surface",
+        example: "The flames singed the edges of her hair."
+    },
+
+    sinuous: {
+        meaning: "having many smooth curves; winding or twisting",
+        example: "A sinuous road winds through the mountains."
+    },
+
+    sip: {
+        meaning: "to drink something slowly in small amounts; a small amount of liquid",
+        example: "She took a sip of coffee and continued reading."
+    },
+
+    siphon: {
+        meaning: "a tube used to move liquid from one container to another; to remove liquid using a siphon",
+        example: "They used a hose to siphon water from the tank."
+    },
+
+    sirloin: {
+        meaning: "a high-quality cut of beef from the back of a cow",
+        example: "He ordered a grilled sirloin steak for dinner."
+    },
+
+    sizeable: {
+        meaning: "fairly large",
+        example: "The company made a sizeable profit last year."
+    },
+
+    sizzle: {
+        meaning: "to make a hissing sound when being fried or cooked",
+        example: "The bacon began to sizzle in the pan."
+    },
+
+    skid: {
+        meaning: "to slide sideways, especially because of losing control; a sideways sliding movement",
+        example: "The car skidded on the wet road."
+    },
+
+    "skin-diving": {
+        meaning: "diving underwater using simple equipment such as a mask, fins, and a breathing tube",
+        example: "They went skin-diving near the coral reef."
+    },
+
+    skinny: {
+        meaning: "extremely thin",
+        example: "The skinny dog looked as though it had not eaten for days."
+    },
+
+    slab: {
+        meaning: "a thick, flat piece of stone, wood, or another material",
+        example: "The workers placed a large slab of stone on the floor."
+    },
+
+    slag: {
+        meaning: "waste material produced during metal-making; a woman considered sexually immoral; to insult or criticize someone",
+        example: "The factory produces large quantities of slag during the metal-making process."
+    },
+
+    slanderous: {
+        meaning: "containing false statements intended to damage someone's reputation",
+        example: "The newspaper was accused of publishing slanderous claims."
+    },
+
+    slangy: {
+        meaning: "using or containing a lot of slang",
+        example: "The dialogue in the novel is deliberately slangy and informal."
+    },
+
+    slash: {
+        meaning: "to cut violently with a sharp object; to reduce something greatly; to make a long cut in clothing as decoration; a long cut or opening",
+        example: "The company slashed prices to attract more customers."
+    },
+
+    slat: {
+        meaning: "a thin, narrow strip of wood or plastic",
+        example: "The blinds were made of thin wooden slats."
+    },
+
+    slavish: {
+        meaning: "like a slave; following someone or something blindly without originality",
+        example: "The design is a slavish imitation of an earlier work."
+    },
+
+    sleazy: {
+        meaning: "dirty, cheap, or morally unpleasant",
+        example: "They stayed in a sleazy hotel near the station."
+    },
+
+    sleek: {
+        meaning: "smooth and shiny; well-groomed and healthy-looking; fashionable and elegant",
+        example: "The new sports car has a sleek, modern design."
+    },
+
+    sleeper: {
+        meaning: "a person who is sleeping; a wooden support under railway tracks; a railway carriage with beds",
+        example: "We booked a sleeper for the overnight train journey."
+    },
+
+    slick: {
+        meaning: "smooth and effective; clever but not completely honest; smooth and slippery; a layer of oil floating on water",
+        example: "He gave a slick presentation that impressed the investors."
+    },
+
+    slime: {
+        meaning: "a thick, soft, slippery substance; a slimy substance produced by some animals",
+        example: "The pond was covered with a layer of green slime."
+    },
+
+    slimy: {
+        meaning: "covered with or resembling slime; dishonest or unpleasant",
+        example: "The rocks were wet and slimy."
+    },
+
+    slink: {
+        meaning: "to move quietly and secretly; to move in a shy or uncomfortable way",
+        example: "The cat slinked quietly out of the room."
+    },
+
+    slit: {
+        meaning: "a long, narrow cut or opening; to make a long, narrow cut in something",
+        example: "There was a narrow slit in the curtain."
+    },
+
+    slither: {
+        meaning: "to move smoothly and quietly like a snake",
+        example: "The snake slithered through the grass."
+    },
+
+    sliver: {
+        meaning: "a thin, narrow piece broken or cut from something; to break or cut into thin pieces",
+        example: "A sliver of glass was embedded in his finger."
+    },
+
+    slop: {
+        meaning: "to spill or splash liquid",
+        example: "Be careful not to slop the soup onto the table."
+    },
+
+    slouch: {
+        meaning: "to sit, stand, or walk in a lazy, drooping way; a lazy or ineffective person",
+        example: "Don't slouch when you're sitting at your desk."
+    },
+
+    slug: {
+        meaning: "to hit someone very hard; a hard punch; a bullet; a piece of metal used instead of a coin in a machine",
+        example: "He slugged the ball over the left-field fence."
+    },
+
+    slump: {
+        meaning: "to fall or sit heavily; to decrease suddenly and greatly",
+        example: "The economy went into a serious slump."
+    },
+
+    slurry: {
+        meaning: "a thick liquid mixture of water and solid material",
+        example: "The workers pumped the slurry into a storage tank."
+    },
+
+    slur: {
+        meaning: "to speak unclearly; to make an insulting or damaging statement about someone; an insulting or damaging remark",
+        example: "He began to slur his words after drinking too much."
+    },
+
+    smother: {
+        meaning: "to kill by preventing someone from breathing; to cover completely; to suppress or control a feeling",
+        example: "She tried to smother her anger during the meeting."
+    },
+
+    smolder: {
+        meaning: "to burn slowly without producing flames; to continue to exist as a strong but controlled emotion",
+        example: "The fire continued to smolder long after midnight."
+    },
+
+    smug: {
+        meaning: "too pleased with oneself and one's achievements",
+        example: "He looked smug after winning the argument."
+    },
+
+    snag: {
+        meaning: "an unexpected difficulty or problem; a sharp object that catches or tears something; to catch or become caught",
+        example: "We ran into a snag when the computer system stopped working."
+    },
+
+    snare: {
+        meaning: "a trap for catching animals or people; something that attracts someone into a difficult situation; to catch with a trap",
+        example: "He realized too late that the offer was a financial snare."
+    },
+
+    snarl: {
+        meaning: "to growl angrily; to speak angrily or rudely; an angry or threatening sound",
+        example: "The dog snarled at the stranger."
+    },
+
+    snigger: {
+        meaning: "to laugh quietly or secretly in a disrespectful way",
+        example: "The students sniggered when the teacher made a mistake."
+    },
+
+    sniffle: {
+        meaning: "to breathe noisily through the nose, usually because of a cold or crying; a sniffing sound",
+        example: "The child kept sniffling throughout the lesson."
+    },
+
+    snipe: {
+        meaning: "to attack or shoot from a hidden position; to criticize someone unfairly",
+        example: "The two politicians continued to snipe at each other during the debate."
+    },
+
+    sniper: {
+        meaning: "a person trained to shoot at targets from a hidden position",
+        example: "The soldiers were warned that a sniper might be hiding nearby."
+    },
+
+    snivel: {
+        meaning: "to cry or complain in a weak, annoying way",
+        example: "He began to snivel when his mother refused to buy the toy."
+    },
+
+    snooty: {
+        meaning: "behaving as if one is better or more important than other people",
+        example: "The waiter was polite but the manager seemed rather snooty."
+    },
+
+    snorkel: {
+        meaning: "a tube that allows a person to breathe while swimming underwater; to dive or swim using a snorkel",
+        example: "We spent the afternoon snorkeling around the island."
+    },
+
+    snort: {
+        meaning: "to force air noisily through the nose; a noisy sound made by breathing through the nose",
+        example: "The horse snorted and shook its head."
+    },
+
+    snout: {
+        meaning: "the projecting nose and mouth of an animal; something shaped like an animal's nose; a person's nose; an informer to the police; tobacco",
+        example: "The dog lowered its snout and began sniffing the ground."
+    },
+
+    snub: {
+        meaning: "to deliberately ignore or treat someone coldly",
+        example: "She felt hurt when her colleagues snubbed her at the party."
+    },
+
+    snuff: {
+        meaning: "powdered tobacco that is inhaled through the nose; to extinguish a flame",
+        example: "He snuffed out the candle before leaving the room."
+    },
+
+    sobriety: {
+        meaning: "the state of being serious, sensible, and self-controlled; the state of not being drunk",
+        example: "After years of drinking, he decided to return to a life of sobriety."
+    },
+
+    soggy: {
+        meaning: "very wet and soft",
+        example: "The bread became soggy after being left in the soup."
+    },
+
+    sol: {
+        meaning: "the fifth note of the musical scale",
+        example: "The singer held the note sol for several seconds."
+    },
+
+    solace: {
+        meaning: "comfort in a time of sadness or difficulty; to comfort someone",
+        example: "She found solace in music after the loss of her friend."
+    },
+
+    solemnity: {
+        meaning: "seriousness and dignity; a serious or formal ceremony",
+        example: "The solemnity of the occasion made everyone quiet."
+    },
+
+    soliloquy: {
+        meaning: "a speech in which a character in a play speaks their thoughts aloud, especially when alone",
+        example: "The actor delivered a powerful soliloquy in the final scene."
+    },
+
+    solitary: {
+        meaning: "living or being alone; single; remote and rarely visited",
+        example: "He lived a solitary life in a small house in the mountains."
+    },
+
+    solitude: {
+        meaning: "the state of being alone; a lonely or remote place",
+        example: "She enjoyed the peace and solitude of the countryside."
+    },
+
+    solvency: {
+        meaning: "the ability to pay debts and meet financial obligations",
+        example: "The company is taking measures to maintain its solvency."
+    },
+
+    sombre: {
+        meaning: "dark or dull in color; serious, sad, or gloomy",
+        example: "The mood at the meeting was sombre after the announcement."
+    },
+
+    sonar: {
+        meaning: "a system that uses sound waves to detect and locate objects underwater",
+        example: "The submarine used sonar to locate the vessel."
+    },
+
+    sonata: {
+        meaning: "a piece of music written for one or a few instruments",
+        example: "She played a Beethoven sonata on the piano."
+    },
+
+    sophist: {
+        meaning: "a person who uses clever but false arguments to deceive people",
+        example: "The speaker was dismissed as a sophist who cared more about winning than telling the truth."
+    },
+
+    soprano: {
+        meaning: "the highest female singing voice; a singer with the highest female voice",
+        example: "The soprano received a standing ovation after her performance."
+    },
+
+    sordid: {
+        meaning: "morally bad or shameful; dirty and unpleasant",
+        example: "The newspaper revealed the sordid details of the scandal."
+    },
+
+    sortie: {
+        meaning: "a short trip or visit; a military attack or operation; a flight made by one aircraft during a military operation",
+        example: "The fighter aircraft made a sortie over enemy territory."
+    },
+
+    spaniel: {
+        meaning: "a type of hunting dog with long ears and long hair",
+        example: "The brown spaniel followed its owner across the field."
+    },
+
+    spar: {
+        meaning: "a long strong piece of wood or metal used as part of a ship or other structure; to exchange light punches; to argue or disagree with someone",
+        example: "The two politicians often spar over economic policy."
+    },
+
+    sparingly: {
+        meaning: "in a limited or economical way",
+        example: "Use salt sparingly when preparing the dish."
+    },
+
+    spasm: {
+        meaning: "a sudden involuntary movement or contraction; a sudden short period of activity or emotion",
+        example: "A sudden muscle spasm caused severe pain in his back."
+    },
+
+    spasmodic: {
+        meaning: "happening suddenly and irregularly; related to muscle spasms",
+        example: "There were spasmodic bursts of applause throughout the speech."
+    },
+
+    spate: {
+        meaning: "a large number or amount of something that happens suddenly",
+        example: "The region has experienced a spate of violent storms this summer."
+    },
+
+    spatter: {
+        meaning: "to splash or scatter small drops of liquid onto something",
+        example: "Mud spattered his shoes as he walked along the wet road."
+    },
+
+    spatial: {
+        meaning: "related to space or the position and arrangement of things",
+        example: "The game helps children develop their spatial awareness."
+    },
+
+    speckle: {
+        meaning: "a small spot or mark on a surface",
+        example: "The bird's eggs were covered with small brown speckles."
+    },
+
+    spectre: {
+        meaning: "a ghost; a frightening possibility or fear",
+        example: "The spectre of war continued to haunt the country."
+    },
+
+    spectrum: {
+        meaning: "a range of colors produced when light is separated; a wide range of related things",
+        example: "The debate attracted people from across the political spectrum."
+    },
+
+    spew: {
+        meaning: "to forcefully send out liquid, gas, or other material; to vomit",
+        example: "The volcano began to spew ash into the sky."
+    },
+
+    spindle: {
+        meaning: "a thin rod used for spinning or winding; a rotating shaft",
+        example: "The thread was wound around a wooden spindle."
+    },
+
+    spinner: {
+        meaning: "a person who spins thread or yarn",
+        example: "The spinner turned the wool into fine thread."
+    },
+
+    spirited: {
+        meaning: "full of energy, enthusiasm, and liveliness",
+        example: "The team put up a spirited fight despite being behind."
+    },
+
+    spirituality: {
+        meaning: "the quality or state of being concerned with the spirit, religion, or deeper meaning of life",
+        example: "The book explores themes of spirituality and personal growth."
+    },
+
+    spleen: {
+        meaning: "an organ in the body that helps clean the blood; bad temper or anger",
+        example: "He vented his spleen in a series of angry letters."
+    },
+
+    splutter: {
+        meaning: "to speak quickly and with difficulty; to make a series of short, explosive sounds",
+        example: "She spluttered with anger when she heard the accusation."
+    },
+
+    spook: {
+        meaning: "a ghost; to frighten or scare someone",
+        example: "The sudden noise spooked the horses."
+    },
+
+    spore: {
+        meaning: "a tiny reproductive cell produced by plants, fungi, and some microorganisms",
+        example: "Fungi reproduce by producing spores."
+    },
+
+    sporadic: {
+        meaning: "happening occasionally and irregularly",
+        example: "There were sporadic outbreaks of violence in the region."
+    },
+
+    spout: {
+        meaning: "a tube or opening through which liquid flows; a stream of liquid; to send out liquid; to speak rapidly and at length",
+        example: "Water began to spout from the broken pipe."
+    },
+
+    sprawl: {
+        meaning: "to sit, lie, or fall with the arms and legs spread out; to spread out over a large area",
+        example: "The city continues to sprawl into the surrounding countryside."
+    },
+
+    sprint: {
+        meaning: "to run as fast as possible for a short distance",
+        example: "He sprinted across the finish line."
+    },
+
+    spurious: {
+        meaning: "false or not genuine; based on false reasoning",
+        example: "The report was based on a spurious claim that had no scientific evidence."
+    },
+
+    squabble: {
+        meaning: "to argue about something unimportant",
+        example: "The children were squabbling over who would get the last piece of cake."
+    },
+
+    squalid: {
+        meaning: "extremely dirty and unpleasant; morally unpleasant or shameful",
+        example: "The family was living in a small, squalid apartment."
+    },
+
+    squall: {
+        meaning: "a sudden strong wind or storm; a loud cry caused by pain or fear; to cry or scream loudly",
+        example: "A sudden squall forced the sailors to return to shore."
+    },
+
+    squalor: {
+        meaning: "a very dirty and unpleasant condition; disgraceful or morally unpleasant conditions",
+        example: "The report described the extreme squalor in the overcrowded housing."
+    },
+
+    squash: {
+        meaning: "to crush or flatten something; to force into a small space; to suppress something; a game played with rackets and a small ball; a type of vegetable related to pumpkins and zucchini",
+        example: "Be careful not to squash the fruit when you put it in the bag."
+    },
+
+    squawk: {
+        meaning: "to make a loud, harsh sound like a bird; to complain loudly",
+        example: "The parrot began to squawk when someone entered the room."
+    },
+
+    squeak: {
+        meaning: "a short, high-pitched sound; to make a high-pitched sound; to inform on someone",
+        example: "The door began to squeak whenever it was opened."
+    },
+
+    squeal: {
+        meaning: "a long, high-pitched cry or sound",
+        example: "The children let out a squeal of excitement."
+    },
+
+    squeamish: {
+        meaning: "easily made to feel sick or disgusted; easily shocked or nervous",
+        example: "I'm too squeamish to watch scenes involving surgery."
+    },
+
+    squint: {
+        meaning: "to look with partly closed eyes; to have eyes that do not point in the same direction; a partly closed look",
+        example: "She squinted in the bright sunlight."
+    },
+
+    squire: {
+        meaning: "a landowner or gentleman in the English countryside; a local magistrate",
+        example: "The squire owned most of the land surrounding the village."
+    },
+
+    squirm: {
+        meaning: "to twist or move around because of discomfort or embarrassment",
+        example: "The child began to squirm in his chair during the long speech."
+    },
+
+    squirt: {
+        meaning: "to force liquid out in a narrow stream; a narrow stream of liquid; an annoying or self-important person",
+        example: "The children squirted water at each other with plastic bottles."
+    },
+
+    staccato: {
+        meaning: "played or spoken with short, separate sounds",
+        example: "The pianist played the notes in a sharp staccato style."
+    },
+
+    stag: {
+        meaning: "an adult male deer; a male-only event or gathering",
+        example: "We saw a large stag standing at the edge of the forest."
+    },
+
+    staid: {
+        meaning: "calm, serious, old-fashioned, and conservative",
+        example: "The hotel has a rather staid and traditional atmosphere."
+    },
+
+    stalemate: {
+        meaning: "a situation in which no progress can be made; a situation in chess in which neither side can make a move without losing; to cause a situation in which no progress is possible",
+        example: "The negotiations ended in a stalemate."
+    },
+
+    stalk: {
+        meaning: "to follow or approach someone quietly and secretly; to walk in a proud or threatening way",
+        example: "The tiger stalked its prey through the tall grass."
+    },
+
+    stallion: {
+        meaning: "an adult male horse",
+        example: "The powerful stallion ran across the field."
+    },
+
+    stalwart: {
+        meaning: "strong and physically sturdy; loyal and determined; a loyal and reliable supporter",
+        example: "She has been a stalwart supporter of the organization for many years."
+    },
+
+    stamina: {
+        meaning: "physical or mental strength that allows someone to continue doing something for a long time",
+        example: "Running a marathon requires considerable stamina."
+    },
+
+    stampede: {
+        meaning: "a sudden uncontrolled rush of animals or people; to cause animals or people to rush suddenly",
+        example: "The noise caused the horses to stampede."
+    },
+
+    stance: {
+        meaning: "the way someone stands; an attitude, opinion, or position on an issue",
+        example: "The government has taken a firm stance on the issue."
+    },
+
+    standing: {
+        meaning: "social or professional position; the length of time something has continued; permanent or regularly established",
+        example: "She is a respected professor with high standing in her field."
+    },
+
+    stanza: {
+        meaning: "a group of lines forming a section of a poem",
+        example: "The final stanza of the poem changes the tone completely."
+    },
+
+    starboard: {
+        meaning: "the right side of a ship or aircraft when facing forward",
+        example: "The captain ordered the crew to turn to starboard."
+    },
+
+    stardom: {
+        meaning: "the status or position of being a famous entertainer",
+        example: "The young actor rose to stardom after his first major film."
+    },
+
+    stark: {
+        meaning: "very clear and obvious; severe or extreme",
+        example: "There is a stark contrast between the two neighborhoods."
+    },
+
+    surreptitious: {
+        meaning: "done secretly or without being noticed",
+        example: "He took a surreptitious glance at his watch during the meeting."
+    },
+
+    surrogate: {
+        meaning: "a substitute or replacement; a person or thing that acts in place of another",
+        example: "The painting became a surrogate for the lost original."
+    },
+
+    susceptible: {
+        meaning: "easily influenced or affected by something; easily affected by a disease or condition",
+        example: "Young children are particularly susceptible to colds."
+    },
+
+    susceptibility: {
+        meaning: "the state of being easily influenced, affected, or harmed",
+        example: "The study examined the susceptibility of crops to disease."
+    },
+
+    sustenance: {
+        meaning: "food or other things needed to maintain life and health",
+        example: "The hikers carried enough food to provide sustenance for several days."
+    },
+
+    swagger: {
+        meaning: "to walk or behave in a confident and arrogant way; an arrogant or overly confident manner",
+        example: "He swaggered into the room as if he owned the place."
+    },
+
+    swap: {
+        meaning: "to exchange one thing for another; an exchange",
+        example: "The two students agreed to swap seats."
+    },
+
+    swathe: {
+        meaning: "a long, wide strip of grass, plants, or land; a long, wide piece or area",
+        example: "A wide swathe of forest was destroyed by the fire."
+    },
+
+    swine: {
+        meaning: "a pig; an unpleasant or contemptible person or thing",
+        example: "The farmer keeps several swine on his land."
+    },
+
+    swipe: {
+        meaning: "to hit or strike hard",
+        example: "The player swiped at the ball but missed."
+    },
+
+    swirl: {
+        meaning: "to move around in a twisting circular motion; a circular or twisting movement",
+        example: "The leaves swirled around in the wind."
+    },
+
+    swivel: {
+        meaning: "to turn or rotate around a fixed point; a device that allows something to rotate",
+        example: "She swivelled around in her chair to face him."
+    },
+
+    swoop: {
+        meaning: "to move or fly down suddenly to attack or seize something; a sudden downward attack or movement",
+        example: "The eagle swooped down and caught the fish."
+    },
+
+    syndrome: {
+        meaning: "a group of medical signs or symptoms that occur together",
+        example: "The doctor recognized the symptoms as part of a rare syndrome."
+    },
+
+    synopsis: {
+        meaning: "a brief summary of a book, play, film, or other work",
+        example: "The publisher asked the author to provide a brief synopsis of the novel."
+    },
+
+    synoptic: {
+        meaning: "giving a brief general summary or overview",
+        example: "The report provides a synoptic view of the country's economic situation."
+    },
+
+    syphilis: {
+        meaning: "a sexually transmitted infection caused by bacteria",
+        example: "The clinic offers confidential testing for syphilis and other infections."
+    },
+
+scrawny: {
+    meaning: "skinny; very thin",
+    example: "The scrawny boy looked as if he had not eaten enough."
+},
+
+scribe: {
+    meaning: "a copyist; a scribe; a Jewish religious scholar",
+    example: "The scribe carefully copied the ancient text by hand."
+},
+
+scrum: {
+    meaning: "a rugby scrum; a confused crowd; a jostling mass of people",
+    example: "The players formed a scrum to compete for the ball."
+},
+
+scrounge: {
+    meaning: "to obtain something by borrowing, begging, or taking",
+    example: "He managed to scrounge some money from his friends."
+},
+
+scruple: {
+    meaning: "a moral hesitation; a qualm; a unit of weight equal to 1.295 grams; to hesitate because of moral reservations",
+    example: "She had no scruples about telling him the truth."
+},
+
+scrupulous: {
+    meaning: "careful; conscientious; meticulous",
+    example: "She is scrupulous about checking every detail of her work."
+},
+
+scrutinise: {
+    meaning: "to examine something carefully and thoroughly",
+    example: "The teacher scrutinised the students' answers carefully."
+},
+
+scuba: {
+    meaning: "an underwater breathing apparatus; scuba",
+    example: "He learned to use scuba equipment before diving into the sea."
+},
+
+sectarian: {
+    meaning: "sectarian; relating to a religious sect",
+    example: "The conflict was partly caused by sectarian differences."
+},
+
+scuffle: {
+    meaning: "to fight or struggle roughly; a brief fight",
+    example: "The two men got into a scuffle outside the stadium."
+},
+
+scum: {
+    meaning: "foam or floating waste on the surface of a liquid; a group of bad or contemptible people",
+    example: "A layer of scum had formed on the surface of the pond."
+},
+
+scupper: {
+    meaning: "to deliberately sink one's own ship; to cause something to fail; to ruin or destroy",
+    example: "The unexpected expense scuppered their plans for the trip."
+},
+
+scurf: {
+    meaning: "dandruff; flakes of dead skin",
+    example: "The shampoo helps remove scurf from the scalp."
+},
+
+scurry: {
+    meaning: "to move or run quickly with short steps; a quick movement with short steps",
+    example: "The children scurried across the playground when it started to rain."
+},
+
+scuttle: {
+    meaning: "to run with quick, short steps; a quick run; to deliberately sink a ship; a porthole; a hatch or window",
+    example: "The little mouse scuttled across the kitchen floor."
+},
+
+seaward: {
+    meaning: "toward the sea; coming from the sea (of wind); the direction toward the sea",
+    example: "The strong seaward wind made the boat difficult to control."
+},
+
+seclude: {
+    meaning: "to isolate; to keep apart; to withdraw from others",
+    example: "He decided to seclude himself in the countryside to finish his book."
+},
+
+secession: {
+    meaning: "withdrawal; separation; secession",
+    example: "The region's secession led to a period of political uncertainty."
+},
+
+secluded: {
+    meaning: "withdrawn; quiet and private; isolated",
+    example: "They found a secluded beach far from the crowded tourist areas."
+},
+
+secrete: {
+    meaning: "to produce and release a substance from an organ; to hide; to conceal",
+    example: "Certain glands secrete hormones into the bloodstream."
+},
+
+secretive: {
+    meaning: "unwilling to reveal information; close-mouthed",
+    example: "He is very secretive about his personal life."
+},
+
+sectarian: {
+    meaning: "sectarian; relating to a religious sect",
+    example: "The conflict was partly caused by sectarian differences."
+}
+};
+
+// ======================================================
+// SHUFFLE FUNCTION
+// ======================================================
+
+function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+}
+
+
+// ======================================================
+// GENERATE 100 RANDOM QUIZ QUESTIONS
+// ======================================================
+
+function generateQuizQuestions(numberOfQuestions = 100) {
+
+    const allWords = Object.entries(vocabulary);
+
+    // Randomly select vocabulary items
+    const selectedWords = shuffle([...allWords])
+        .slice(0, Math.min(numberOfQuestions, allWords.length));
+
+    const questions = selectedWords.map(([word, entry]) => {
+
+        // Get three other words as distractors
+        const otherWords = allWords
+            .filter(([w]) => w !== word)
+            .map(([w]) => w);
+
+        // Randomly select 3 distractors
+        const distractors = shuffle([...otherWords])
+            .slice(0, 3);
+
+        // Create four choices
+        const options = [
+            word,
+            ...distractors
+        ];
+
+        // Shuffle the four choices
+        shuffle(options);
+
+        // Find the correct answer
+        const answerIndex = options.indexOf(word);
+
+        const answerLetter =
+            String.fromCharCode(65 + answerIndex);
+
+        // Get meaning and example
+        const meaning = entry.meaning;
+        const example = entry.example;
+
+        return `${meaning}
+A. ${options[0]}
+B. ${options[1]}
+C. ${options[2]}
+D. ${options[3]}
+Answer: ${answerLetter}
+Meaning: ${meaning}
+Example: ${example}`;
+
+    });
+
+    return questions.join("\n\n");
+}
+
+// Generate exactly 100 questions
+const questionText = generateQuizQuestions(Object.keys(vocabulary).length);
+function parseQuestions(text) {
+
+    // Normalize line breaks
+
+    text = text.replace(/\r\n/g, "\n");
+
+
+    // Split questions at blank lines
+
+    const blocks = text
+        .trim()
+        .split(/\n\s*\n/);
+
+
+    const questions = [];
+
+
+    blocks.forEach(function(block) {
+
+        const lines = block
+            .split("\n")
+            .map(line => line.trim())
+            .filter(line => line !== "");
+
+
+        if (lines.length < 6) {
+            return;
+        }
+
+
+        // ----------------------------------------------
+        // Question
+        // ----------------------------------------------
+
+        const question = lines[0];
+
+
+        // ----------------------------------------------
+        // Options
+        // ----------------------------------------------
+
+        const options = [];
+
+        for (let i = 1; i <= 4; i++) {
+
+            let option = lines[i];
+
+
+            // Remove A. B. C. D.
+            // Also accepts A. option, A) option, etc.
+
+            option = option.replace(
+                /^[A-Da-d]\s*[\.\)]\s*/,
+                ""
+            );
+
+
+            options.push(option);
+
+        }
+
+
+        // ----------------------------------------------
+        // Answer
+        // ----------------------------------------------
+
+        const answerLine = lines[5];
+
+
+        const match = answerLine.match(
+            /Answer\s*:\s*([A-Da-d1-4])/i
+        );
+
+
+        if (!match) {
+            console.warn(
+                "Could not find answer:",
+                answerLine
+            );
+
+            return;
+        }
+
+
+        const answerValue =
+            match[1].toUpperCase();
+
+
+        let answer;
+
+
+        // If answer is A/B/C/D
+
+        if (
+            answerValue === "A" ||
+            answerValue === "B" ||
+            answerValue === "C" ||
+            answerValue === "D"
+        ) {
+
+            answer =
+                answerValue.charCodeAt(0) -
+                "A".charCodeAt(0) +
+                1;
+
+        }
+
+
+        // If answer is 1/2/3/4
+
+        else {
+
+            answer =
+                parseInt(answerValue);
+
+        }
+
+
+        // ----------------------------------------------
+        // Optional Meaning / Example lines
+        // ----------------------------------------------
+
+        let meaning = "";
+        let example = "";
+
+        for (let i = 6; i < lines.length; i++) {
+
+            const meaningMatch = lines[i].match(
+                /^Meaning\s*:\s*(.+)$/i
+            );
+
+            const exampleMatch = lines[i].match(
+                /^Example\s*:\s*(.+)$/i
+            );
+
+            if (meaningMatch) {
+                meaning = meaningMatch[1];
+            } else if (exampleMatch) {
+                example = exampleMatch[1];
+            }
+
+        }
+
+
+        questions.push({
+
+            question: question,
+
+            options: options,
+
+            answer: answer,
+
+            meaning: meaning,
+
+            example: example
+
+        });
+
+    });
+
+
+    return questions;
+
+}
+
+
+// ======================================================
+// CREATE QUESTION ARRAY
+// ======================================================
+
+const questions =
+    parseQuestions(questionText);
+
+
+// ======================================================
+// VARIABLES
+// ======================================================
+
+let currentQuestion = 0;
+let correctAnswers = 0;
+let score = 0;
+let questionResults = [];
+
+// ======================================================
+// DISPLAY QUESTION
+// ======================================================
+
+function displayQuestion() {
+
+    document.querySelector(".navigation").style.display =
+        "flex";
+
+    const question = questions[currentQuestion];
+
+    // Question number
+    document.getElementById("progress").textContent =
+        "Question " +
+        (currentQuestion + 1) +
+        " / " +
+        questions.length;
+
+    // Current score
+    document.getElementById("score").textContent =
+        "Score: " +
+        score;
+
+    // Display question
+    document.getElementById("question").textContent =
+        question.question;
+
+    // Clear old options
+    const optionsDiv =
+        document.getElementById("options");
+
+    optionsDiv.innerHTML = "";
+
+    // Clear feedback
+    document.getElementById("feedback").textContent = "";
+
+    // Create buttons
+    question.options.forEach(function(option, index) {
+
+        const button =
+            document.createElement("button");
+
+        button.className = "option";
+
+        button.textContent =
+            String.fromCharCode(65 + index) +
+            ". " +
+            option;
+
+        button.addEventListener(
+            "click",
+            function() {
+                checkAnswer(index, button);
+            }
+        );
+
+        optionsDiv.appendChild(button);
+    });
+
+    // Previous button
+    document.getElementById("prevButton").disabled =
+        currentQuestion === 0;
+}
+
+
+// ======================================================
+// CHECK ANSWER
+// ======================================================
+
+function checkAnswer(selectedIndex, button) {
+
+    const question =
+        questions[currentQuestion];
+
+    // Prevent answering the same question twice
+    const buttons =
+        document.querySelectorAll(".option");
+
+    buttons.forEach(function(btn) {
+        btn.disabled = true;
+    });
+
+    // Correct answer
+    if (selectedIndex + 1 === question.answer) {
+
+questionResults[currentQuestion] = 1;
+
+score = questionResults.reduce(
+    (total, mark) => total + mark,
+    0
+);
+
+correctAnswers = questionResults.filter(
+    mark => mark === 1
+).length;
+
+button.classList.add("correct");
+        button.classList.add("correct");
+
+        document.getElementById("feedback").textContent =
+            "Correct!";
+
+        // Automatically move on after a short pause
+        setTimeout(goToNextOrFinish, 900);
+    }
+
+    // Wrong answer
+    else {
+
+        button.classList.add("wrong");
+
+        // Show the correct answer
+        buttons[
+            question.answer - 1
+        ].classList.add("correct");
+
+        document.getElementById("feedback").textContent =
+            "Wrong.";
+
+        // Show the info popup for the correct answer
+        showInfo(question);
+    }
+
+    // Update score
+    document.getElementById("score").textContent =
+        "Score: " +
+        score;
+}
+
+// ======================================================
+// SHOW / CLOSE INFO POPUP
+// ======================================================
+
+function showInfo(question) {
+
+    const correctOption =
+        question.options[question.answer - 1];
+
+    document.getElementById("infoWord").textContent =
+        correctOption;
+
+    document.getElementById("infoMeaning").innerHTML =
+        question.meaning
+            ? "<span class='label'>Meaning: </span>" + question.meaning
+            : "";
+
+    document.getElementById("infoExample").innerHTML =
+        question.example
+            ? "<span class='label'>Example: </span>" + question.example
+            : "";
+
+    document.getElementById("infoOverlay").classList.add("visible");
+}
+
+
+function closeInfo() {
+
+    document.getElementById("infoOverlay").classList.remove("visible");
+
+    // Automatically move on once the popup is dismissed
+    goToNextOrFinish();
+}
+
+
+// ======================================================
+// PREVIOUS QUESTION
+// ======================================================
+
+function previousQuestion() {
+
+    if (currentQuestion > 0) {
+
+        currentQuestion--;
+
+        displayQuestion();
+    }
+}
+
+
+// ======================================================
+// GO TO NEXT QUESTION (OR FINISH)
+// ======================================================
+
+function goToNextOrFinish() {
+
+    if (currentQuestion < questions.length - 1) {
+
+        currentQuestion++;
+
+        displayQuestion();
+    }
+
+    else {
+
+        showResult();
+    }
+}
+
+// ======================================================
+// RESTART QUIZ
+// ======================================================
+
+function restartQuiz() {
+
+currentQuestion = 0;
+
+correctAnswers = 0;
+
+score = 0;
+questionResults = [];
+
+
+document.getElementById("result").innerHTML = "";
+
+document.getElementById("restartButton").style.display =
+    "none";
+
+displayQuestion();
+}
+
+// ======================================================
+// SHOW FINAL RESULT
+// ======================================================
+
+function showResult() {
+
+const totalQuestions = questions.length;
+
+const percentage =
+    (correctAnswers / totalQuestions) * 100;
+
+const mark =
+    percentage.toFixed(2);
+
+// Clear quiz
+document.getElementById("progress").textContent = "";
+document.getElementById("score").textContent = "";
+document.getElementById("question").textContent = "";
+document.getElementById("options").innerHTML = "";
+document.getElementById("feedback").textContent = "";
+
+document.querySelector(".navigation").style.display =
+    "none";
+
+document.getElementById("restartButton").style.display =
+    "block";
+
+// Display result
+document.getElementById("result").innerHTML =
+
+    "Quiz Finished!<br><br>" +
+
+    "Correct answers: " +
+    correctAnswers +
+    " / " +
+    totalQuestions +
+
+    "<br><br>" +
+
+    "Score: " +
+    score +
+    " / " +
+totalQuestions +
+
+    "<br><br>" +
+
+    "Mark: " +
+    mark +
+    " / 100";
+}
+
+// ======================================================
+// START QUIZ
+// ======================================================
+
+if (questions.length > 0) {
+
+    displayQuestion();
+
+}
+
+else {
+
+    document.getElementById("question").textContent =
+        "No questions found.";
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
