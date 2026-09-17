@@ -123,7 +123,7 @@ body {
 
     padding: 15px 17px;
 
-    margin-bottom: 13px;
+    margin-bottom: 8px;
 
     font-family: Arial, sans-serif;
 
@@ -189,9 +189,9 @@ body {
    ========================================== */
 
 #feedback {
-    min-height: 10px;
+    min-height: 5px;
 
-    margin-top: 9px;
+    margin-top: 1px;
 
     font-size: 19px;
     line-height: 1.4;
@@ -223,7 +223,7 @@ body {
 
     min-width: 125px;
     min-height: 54px;
-
+    margin-top: 1px;
     padding: 14px 18px;
 
     font-family: Arial, sans-serif;
@@ -247,6 +247,7 @@ body {
 #prevButton {
     color: #374151;
     background: #e5e7eb;
+
 }
 
 
@@ -260,11 +261,6 @@ body {
 
 /* Remove old unused button rules */
 
-#prevBtn,
-#nextBtn {
-    width: auto;
-    height: auto;
-}
 
 
 .navigation button:active {
@@ -638,7 +634,7 @@ body {
     <div id="feedback"></div>
 
     <div class="navigation">
-        <button id="prevButton" onclick="previousQuestion()">Previous</button>
+        <button id="prevButton">Previous</button>
     </div>
 
     <div id="result"></div>
@@ -661,1471 +657,2139 @@ body {
 
 <script>
 const vocabulary = {
-
-    savour: {
-        meaning: "taste; flavor; enjoyment; relish; appreciate; show signs or traces",
-        example: "She savoured every mouthful of the delicious meal."
-    },
-
-    saxophone: {
-        meaning: "a musical instrument played by blowing into a mouthpiece",
-        example: "He plays the saxophone in the university jazz band."
-    },
-
-    scab: {
-        meaning: "a dry crust that forms over a wound; a person who refuses to join a strike or union",
-        example: "A scab had formed over the cut on his knee."
-    },
-
-    scaffold: {
-        meaning: "a temporary structure used by workers when building or repairing a building; a structure used for hanging people",
-        example: "Workers were standing on the scaffold outside the building."
-    },
-
-    scallop: {
-        meaning: "a shellfish with two fan-shaped shells; a decorative edge with a series of curves",
-        example: "We ordered grilled scallops for dinner."
-    },
-
-    scalpel: {
-        meaning: "a small, very sharp knife used by doctors or surgeons",
-        example: "The surgeon carefully picked up the scalpel."
-    },
-
-    scaremonger: {
-        meaning: "a person who spreads alarming or panic-inducing news or rumors",
-        example: "The minister accused the newspaper of being a scaremonger."
-    },
-
-    scary: {
-        meaning: "frightening or causing fear",
-        example: "It was scary to walk home alone in the dark."
-    },
-
-    scathing: {
-        meaning: "extremely critical or severe",
-        example: "The newspaper published a scathing review of the new film."
-    },
-
-    scatterbrain: {
-        meaning: "a person who is forgetful and unable to concentrate",
-        example: "I'm such a scatterbrain that I forgot where I had parked the car."
-    },
-
-    scavenge: {
-        meaning: "to search for and collect useful things that have been thrown away",
-        example: "The birds scavenged for food among the rubbish."
-    },
-
-    scenario: {
-        meaning: "a possible situation or sequence of events; a script or outline",
-        example: "In the worst-case scenario, we may have to cancel the trip."
-    },
-
-    schema: {
-        meaning: "a diagram or outline that shows how something is organized",
-        example: "The students used a simple schema to understand the structure of the argument."
-    },
-
-    schematize: {
-        meaning: "to represent or organize something in the form of a plan or diagram",
-        example: "The researcher schematized the process in a series of diagrams."
-    },
-
-    schizophrenia: {
-        meaning: "a serious mental disorder that affects a person's thoughts, feelings, and behavior",
-        example: "The documentary explored how schizophrenia can affect a person's daily life."
-    },
-
-    scholastic: {
-        meaning: "related to school or education; academic",
-        example: "She received several awards for her scholastic achievements."
-    },
-
-    scintillation: {
-        meaning: "brilliance or liveliness, especially of intelligence; sparkling or flashing light",
-        example: "The audience was impressed by the scintillation of his conversation."
-    },
-
-    scoff: {
-        meaning: "to mock or ridicule someone or something; to eat something quickly or greedily",
-        example: "He scoffed at the idea that the plan could succeed."
-    },
-
-    scowl: {
-        meaning: "to look at someone angrily with a frown",
-        example: "She scowled at him when he interrupted her."
-    },
-
-    scrawl: {
-        meaning: "to write or draw something in a careless, messy way",
-        example: "He scrawled his name on the back of the envelope."
-    },
-
-    sallow: {
-        meaning: "yellowish or pale in color, especially because of illness",
-        example: "His face looked sallow after several days of illness."
-    },
-
-    salutary: {
-        meaning: "having a helpful or beneficial effect",
-        example: "The experience had a salutary effect on his attitude toward work."
-    },
-
-    salvage: {
-        meaning: "to rescue people or property from danger; to recover or reuse something that would otherwise be lost or wasted",
-        example: "The crew managed to salvage several valuable items from the wreck."
-    },
-
-    salvo: {
-        meaning: "a simultaneous firing of several guns; a sudden burst of cheers or applause",
-        example: "The speech was greeted with a salvo of applause."
-    },
-
-    samba: {
-        meaning: "a Brazilian dance or style of music",
-        example: "They spent the evening dancing the samba."
-    },
-
-    sanctification: {
-        meaning: "the act of making something holy; the act of making something acceptable or justified",
-        example: "The ceremony marked the sanctification of the new church."
-    },
-
-    sanctify: {
-        meaning: "to make something holy; to make something acceptable or legitimate",
-        example: "The ceremony was held to sanctify the new building."
-    },
-
-    sanctuary: {
-        meaning: "a holy or sacred place; a place of safety or protection; a place where animals are protected",
-        example: "The wildlife sanctuary provides a safe home for injured animals."
-    },
-
-    sanctum: {
-        meaning: "a sacred or private place; a private room or study",
-        example: "Only a few close friends were allowed into his private sanctum."
-    },
-
-    sanguine: {
-        meaning: "optimistic, hopeful, or cheerful; having a healthy reddish complexion",
-        example: "Despite the difficulties, she remained sanguine about the future."
-    },
-
-    sap: {
-        meaning: "a liquid in plants that carries water and nutrients; to weaken or undermine something gradually",
-        example: "The long journey had sapped all his energy."
-    },
-
-    sardonic: {
-        meaning: "showing mocking or cynical humor",
-        example: "He gave a sardonic smile when he heard the excuse."
-    },
-
-    sarong: {
-        meaning: "a long piece of cloth worn around the body, especially by people in Southeast Asia",
-        example: "She wore a colorful sarong on the beach."
-    },
-
-    sartorial: {
-        meaning: "related to clothing, especially men's clothing",
-        example: "He is known for his impeccable sartorial style."
-    },
-
-    sash: {
-        meaning: "a long band of cloth worn around the waist or across the body; the frame of a window that holds the glass",
-        example: "She wore a red sash around her waist."
-    },
-
-    satiate: {
-        meaning: "to satisfy a desire or appetite completely; to make someone feel completely satisfied or tired of something",
-        example: "The large meal completely satiated his appetite."
-    },
-
-    satiation: {
-        meaning: "the state of being completely satisfied, especially after eating; the feeling of being tired of something",
-        example: "The feeling of satiation came after a large meal."
-    },
-
-    satyr: {
-        meaning: "a creature in Greek and Roman mythology that was part human and part goat; a man with very strong sexual desires",
-        example: "The ancient vase depicts a satyr dancing in the forest."
-    },
-
-    savagery: {
-        meaning: "extremely cruel or violent behavior",
-        example: "The attack was carried out with shocking savagery."
-    },
-
-    savant: {
-        meaning: "a highly knowledgeable or learned person",
-        example: "The young computer savant developed the program in just a few weeks."
-    },
-
-    sedan: {
-        meaning: "a car with four doors and a separate trunk",
-        example: "She drives a small sedan to work every day."
-    },
-
-    sedative: {
-        meaning: "a drug or medicine that makes a person calm or sleepy",
-        example: "The doctor gave him a mild sedative before the procedure."
-    },
-
-    seduce: {
-        meaning: "to persuade someone to have sex with you; to tempt or attract someone into doing something",
-        example: "The advertisements are designed to seduce consumers into buying unnecessary products."
-    },
-
-    seduction: {
-        meaning: "the act of persuading someone to have sex with you; the power to attract or tempt someone",
-        example: "The novel explores the seduction of wealth and power."
-    },
-
-    seductive: {
-        meaning: "attractive or tempting, especially in a sexual way",
-        example: "The restaurant offered a seductive combination of good food and live music."
-    },
-
-    seedy: {
-        meaning: "dirty, shabby, or run-down; looking or feeling unhealthy",
-        example: "The hotel was in a seedy part of town."
-    },
-
-    seep: {
-        meaning: "to flow slowly through small holes or spaces",
-        example: "Water began to seep through the cracks in the wall."
-    },
-
-    seethe: {
-        meaning: "to boil or bubble; to be extremely angry or excited; to be full of activity or movement",
-        example: "She was seething with anger after hearing the accusation."
-    },
-
-    segregate: {
-        meaning: "to separate people or things; to treat people unfairly by keeping them separate from others",
-        example: "The policy was designed to segregate students according to their background."
-    },
-
-    segregation: {
-        meaning: "the act of separating people or things; especially the separation of racial groups",
-        example: "The country eventually abolished racial segregation."
-    },
-
-    selenium: {
-        meaning: "a chemical element",
-        example: "Selenium is a trace element that the human body needs in small amounts."
-    },
-
-    "self-annihilation": {
-        meaning: "the destruction of oneself; complete self-destruction",
-        example: "The novel portrays the character's obsession with self-annihilation."
-    },
-
-    "self-effacing": {
-        meaning: "not trying to attract attention or praise; modest and humble",
-        example: "Despite his success, he remained remarkably self-effacing."
-    },
-
-    "self-fulfilling": {
-        meaning: "becoming true because people expect it to become true or act in ways that make it true",
-        example: "His fear of failure became a self-fulfilling prophecy."
-    },
-
-    "self-made": {
-        meaning: "successful because of one's own efforts rather than family wealth or influence",
-        example: "He is a self-made businessman who started his company with very little money."
-    },
-
-    "self-opinionated": {
-        meaning: "having very strong opinions and believing that one's own opinions are always right",
-        example: "His self-opinionated manner made it difficult for others to work with him."
-    },
-
-    "self-possessed": {
-        meaning: "calm and confident, especially in a difficult situation",
-        example: "She remained self-possessed throughout the difficult interview."
-    },
-
-    "self-preservation": {
-        meaning: "the instinct or effort to protect oneself from danger or harm",
-        example: "Fear is often a natural response driven by self-preservation."
-    },
-
-    "self-restraint": {
-        meaning: "the ability to control one's feelings, desires, or actions",
-        example: "It took considerable self-restraint not to respond angrily."
-    },
-
-    "self-styled": {
-        meaning: "describing someone who gives themselves a particular name, title, or position",
-        example: "He is a self-styled expert on ancient history."
-    },
-
-    "self-willed": {
-        meaning: "determined to do what one wants, even when others disagree",
-        example: "The self-willed child refused to change her decision."
-    },
-
-    semantic: {
-        meaning: "related to the meaning of words or language",
-        example: "The researchers found a semantic difference between the two expressions."
-    },
-
-    semantics: {
-        meaning: "the study of the meanings of words and sentences",
-        example: "She is studying semantics as part of her linguistics course."
-    },
-
-    semblance: {
-        meaning: "the appearance or outward form of something; a slight similarity",
-        example: "After several hours of discussion, the meeting finally reached a semblance of order."
-    },
-
-    seminal: {
-        meaning: "having a strong influence on the later development of something",
-        example: "The book was a seminal work in the field of modern linguistics."
-    },
-
-    senatorial: {
-        meaning: "related to a senate or senator",
-        example: "The committee discussed the bill during a senatorial hearing."
-    },
-
-    senile: {
-        meaning: "showing the mental or physical decline associated with old age",
-        example: "The novel portrays an elderly man who is becoming increasingly senile."
-    },
-
-    sensor: {
-        meaning: "a device that detects and measures changes in the environment",
-        example: "The sensor automatically turns on the lights when someone enters the room."
-    },
-
-    senility: {
-        meaning: "the physical or mental decline associated with old age",
-        example: "The novel describes his gradual decline into senility."
-    },
-
-    sentinel: {
-        meaning: "a person or soldier who guards a place",
-        example: "A lone sentinel stood at the entrance to the fortress."
-    },
-
-    sentry: {
-        meaning: "a guard or soldier who watches and protects a place",
-        example: "The sentry stood outside the palace gates."
-    },
-
-    separatist: {
-        meaning: "a person who wants a region or group to become independent from a larger country or organization",
-        example: "The separatist movement called for greater political independence."
-    },
-
-    sepulchre: {
-        meaning: "a tomb or burial place",
-        example: "The ancient king was laid to rest in a stone sepulchre."
-    },
-
-    sequel: {
-        meaning: "a result or consequence; a story, film, or book that continues an earlier one",
-        example: "The studio announced plans for a sequel to the popular film."
-    },
-
-    serenade: {
-        meaning: "a piece of music performed for or in honor of someone",
-        example: "The musicians played a romantic serenade beneath her window."
-    },
-
-    serf: {
-        meaning: "a person who was legally tied to a piece of land and forced to work for its owner; a person treated like a slave",
-        example: "The peasants were treated as serfs by the landowner."
-    },
-
-    serrated: {
-        meaning: "having an edge with a series of sharp points like a saw",
-        example: "Use a serrated knife to cut the bread cleanly."
-    },
-
-    serum: {
-        meaning: "the clear liquid part of blood; a liquid used for medical treatment or containing antibodies",
-        example: "The doctor took a blood sample to test the serum."
-    },
-
-    serviceable: {
-        meaning: "usable and suitable for a particular purpose; strong enough to be used for a long time",
-        example: "The old car is still serviceable despite its age."
-    },
-
-    servile: {
-        meaning: "too willing to obey or serve someone; lacking independence or dignity",
-        example: "He was criticized for his servile attitude toward his employer."
-    },
-
-    servility: {
-        meaning: "excessive willingness to obey or serve someone",
-        example: "The dictator expected complete servility from his officials."
-    },
-
-    servitude: {
-        meaning: "the condition of being forced to work for and obey another person",
-        example: "The prisoners were kept in conditions of virtual servitude."
-    },
-
-    "set-piece": {
-        meaning: "a carefully planned scene or part of a novel, film, play, or other work",
-        example: "The opening battle is the most spectacular set-piece in the film."
-    },
-
-    setter: {
-        meaning: "a type of long-haired hunting dog",
-        example: "The Irish setter ran across the field after the bird."
-    },
-
-    severity: {
-        meaning: "the quality of being very serious or strict; extreme intensity; harsh punishment or difficult conditions",
-        example: "The severity of the storm forced the airport to close."
-    },
-
-    sexism: {
-        meaning: "unfair treatment or prejudice based on a person's sex or gender",
-        example: "The organization has introduced new policies to combat sexism in the workplace."
-    },
-
-    sexist: {
-        meaning: "a person who has sexist beliefs; showing prejudice based on sex or gender",
-        example: "The company was criticized for making sexist comments about female employees."
-    },
-
-    shack: {
-        meaning: "a small, simple, poorly built house or shelter",
-        example: "They lived in a small wooden shack near the beach."
-    },
-
-    shaggy: {
-        meaning: "having long, thick, untidy hair or fur",
-        example: "The dog had long, shaggy fur."
-    },
-
-    shag: {
-        meaning: "a cormorant, a type of sea bird",
-        example: "A shag was sitting on a rock with its wings spread wide."
-    },
-
-    shamble: {
-        meaning: "to walk slowly and awkwardly, dragging one's feet",
-        example: "The tired man shambled slowly down the street."
-    },
-
-    shanghai: {
-        meaning: "to trick or force someone into doing something; to kidnap someone and force them to work as a sailor",
-        example: "The sailors claimed that they had been shanghaied into working on the ship."
-    },
-
-    shapely: {
-        meaning: "having an attractive and well-proportioned shape",
-        example: "The dress was designed to flatter a shapely figure."
-    },
-
-    shatter: {
-        meaning: "to break or destroy something into many small pieces",
-        example: "The ball hit the window and shattered the glass."
-    },
-
-    sheaf: {
-        meaning: "a bundle of grain, papers, or other things tied together",
-        example: "He carried a sheaf of papers into the meeting."
-    },
-
-    shear: {
-        meaning: "to cut the wool off a sheep; to break or cut something suddenly",
-        example: "The farmer sheared the sheep in early summer."
-    },
-
-    sheath: {
-        meaning: "a protective cover for a knife or sword; a condom",
-        example: "He returned the sword carefully to its sheath."
-    },
-
-    sheen: {
-        meaning: "a soft shine or glow on the surface of something",
-        example: "The table had a beautiful sheen after it was polished."
-    },
-
-    sheikh: {
-        meaning: "an Arab leader or chief; a Muslim religious leader",
-        example: "The sheikh welcomed the visiting delegation."
-    },
-
-    shimmer: {
-        meaning: "to shine with a soft, flickering light",
-        example: "The surface of the lake shimmered in the sunlight."
-    },
-
-    shin: {
-        meaning: "the front part of the lower leg; meat from the lower leg of an animal",
-        example: "He hit his shin against the edge of the table."
-    },
-
-    shirk: {
-        meaning: "to avoid work, responsibility, or a duty, especially because of laziness or fear",
-        example: "You cannot shirk your responsibilities and expect others to do your work."
-    },
-
-    shoal: {
-        meaning: "a large group of fish; a shallow area of water, especially one with sand or rocks",
-        example: "A large shoal of fish moved beneath the boat."
-    },
-
-    shoddy: {
-        meaning: "of poor quality or badly made",
-        example: "The customers complained about the shoddy workmanship."
-    },
-
-    shortfall: {
-        meaning: "an amount that is less than what is needed or expected",
-        example: "The project faces a serious shortfall in funding."
-    },
-
-    shove: {
-        meaning: "to push someone or something roughly",
-        example: "Someone shoved him from behind as he entered the train."
-    },
-
-    shred: {
-        meaning: "a small amount or piece; to tear or cut something into small pieces",
-        example: "She tore the letter into tiny shreds."
-    },
-
-    shrew: {
-        meaning: "a small mouse-like animal that eats insects; an unpleasant, bad-tempered woman",
-        example: "A tiny shrew disappeared into the grass."
-    },
-
-    shrinkage: {
-        meaning: "a reduction in size, especially because of heat, moisture, or use",
-        example: "The sweater may suffer some shrinkage when washed."
-    },
-
-    shrivel: {
-        meaning: "to become or make something smaller, drier, and wrinkled",
-        example: "The leaves began to shrivel in the summer heat."
-    },
-
-    shroud: {
-        meaning: "a cloth used to cover a dead body; something that covers or hides something; to cover or hide",
-        example: "The mountains were shrouded in mist."
-    },
-
-    shrubbery: {
-        meaning: "an area of land covered with shrubs",
-        example: "The house was surrounded by thick shrubbery."
-    },
-
-    shrubby: {
-        meaning: "covered with or consisting of shrubs",
-        example: "The landscape was dry and shrubby."
-    },
-
-    shuffle: {
-        meaning: "to walk without lifting one's feet properly; to mix or rearrange things",
-        example: "He shuffled slowly across the room in his slippers."
-    },
-
-    shun: {
-        meaning: "to deliberately avoid someone or something",
-        example: "After the disagreement, she shunned his company for several weeks."
-    },
-
-    shunt: {
-        meaning: "to move a train onto another track; to move or transfer something to another place or position",
-        example: "The railway workers shunted the train onto a different track."
-    },
-
-    sibling: {
-        meaning: "a brother or sister",
-        example: "She has two older siblings."
-    },
-
-    sic: {
-        meaning: "used in a quotation to show that an unusual or incorrect word was in the original text",
-        example: "The article described him as a 'succesful' businessman [sic]."
-    },
-
-    sickbay: {
-        meaning: "a room or small hospital for sick people, especially on a ship or at a boarding school",
-        example: "The injured sailor was taken to the ship's sickbay."
-    },
-
-    sickening: {
-        meaning: "causing disgust; making someone feel sick or extremely unpleasant",
-        example: "The smell from the abandoned building was sickening."
-    },
-
-    sideline: {
-        meaning: "the line marking the side of a sports field; a job or activity done in addition to one's main work",
-        example: "The coach stood on the sideline watching the game."
-    },
-
-    sidestep: {
-        meaning: "to move aside to avoid something; to avoid dealing with a problem or question",
-        example: "The politician tried to sidestep the question."
-    },
-
-    sidle: {
-        meaning: "to move quietly or cautiously sideways or closer to someone",
-        example: "He sidled up to me and whispered something in my ear."
-    },
-
-    sierra: {
-        meaning: "a mountain range with a jagged or saw-like outline",
-        example: "The Sierra Nevada attracts visitors throughout the year."
-    },
-
-    sighting: {
-        meaning: "an occasion when someone or something is seen",
-        example: "There have been several sightings of the rare bird in the area."
-    },
-
-    signet: {
-        meaning: "a small seal or stamp used as a personal mark",
-        example: "The letter was sealed with his family signet."
-    },
-
-    silage: {
-        meaning: "grass or other green plants preserved as animal food",
-        example: "The farmer stored the silage in a large silo."
-    },
-
-    silhouette: {
-        meaning: "a dark shape or outline of a person or object seen against a lighter background",
-        example: "Her silhouette was clearly visible against the sunset."
-    },
-
-    silica: {
-        meaning: "a chemical substance found in sand, rocks, and glass",
-        example: "Silica is one of the main components of sand."
-    },
-
-    silo: {
-        meaning: "a tall structure used for storing grain or other materials; an underground structure for storing missiles",
-        example: "The farm has several large silos for storing grain."
-    },
-
-    silt: {
-        meaning: "fine sand, mud, or other material carried by water and deposited at the bottom of rivers or lakes",
-        example: "The river carries large amounts of silt downstream."
-    },
-
-    simmer: {
-        meaning: "to cook gently in liquid just below boiling point; to contain or develop strong emotions; to be close to becoming violent",
-        example: "Let the soup simmer for ten minutes before serving."
-    },
-
-    simpleton: {
-        meaning: "a person who is not intelligent or is easily fooled",
-        example: "He was portrayed as a simpleton who believed everything he was told."
-    },
-
-    simulate: {
-        meaning: "to pretend to have or feel something; to imitate or reproduce the behavior of something",
-        example: "The computer program simulates the conditions of a real flight."
-    },
-
-    sinew: {
-        meaning: "a tendon; a source of strength or power",
-        example: "The factory was once the sinew of the local economy."
-    },
-
-    singe: {
-        meaning: "to burn something slightly, usually damaging only the surface",
-        example: "The flames singed the edges of her hair."
-    },
-
-    sinuous: {
-        meaning: "having many smooth curves; winding or twisting",
-        example: "A sinuous road winds through the mountains."
-    },
-
-    sip: {
-        meaning: "to drink something slowly in small amounts; a small amount of liquid",
-        example: "She took a sip of coffee and continued reading."
-    },
-
-    siphon: {
-        meaning: "a tube used to move liquid from one container to another; to remove liquid using a siphon",
-        example: "They used a hose to siphon water from the tank."
-    },
-
-    sirloin: {
-        meaning: "a high-quality cut of beef from the back of a cow",
-        example: "He ordered a grilled sirloin steak for dinner."
-    },
-
-    sizeable: {
-        meaning: "fairly large",
-        example: "The company made a sizeable profit last year."
-    },
-
-    sizzle: {
-        meaning: "to make a hissing sound when being fried or cooked",
-        example: "The bacon began to sizzle in the pan."
-    },
-
-    skid: {
-        meaning: "to slide sideways, especially because of losing control; a sideways sliding movement",
-        example: "The car skidded on the wet road."
-    },
-
-    "skin-diving": {
-        meaning: "diving underwater using simple equipment such as a mask, fins, and a breathing tube",
-        example: "They went skin-diving near the coral reef."
-    },
-
-    skinny: {
-        meaning: "extremely thin",
-        example: "The skinny dog looked as though it had not eaten for days."
-    },
-
-    slab: {
-        meaning: "a thick, flat piece of stone, wood, or another material",
-        example: "The workers placed a large slab of stone on the floor."
-    },
-
-    slag: {
-        meaning: "waste material produced during metal-making; a woman considered sexually immoral; to insult or criticize someone",
-        example: "The factory produces large quantities of slag during the metal-making process."
-    },
-
-    slanderous: {
-        meaning: "containing false statements intended to damage someone's reputation",
-        example: "The newspaper was accused of publishing slanderous claims."
-    },
-
-    slangy: {
-        meaning: "using or containing a lot of slang",
-        example: "The dialogue in the novel is deliberately slangy and informal."
-    },
-
-    slash: {
-        meaning: "to cut violently with a sharp object; to reduce something greatly; to make a long cut in clothing as decoration; a long cut or opening",
-        example: "The company slashed prices to attract more customers."
-    },
-
-    slat: {
-        meaning: "a thin, narrow strip of wood or plastic",
-        example: "The blinds were made of thin wooden slats."
-    },
-
-    slavish: {
-        meaning: "like a slave; following someone or something blindly without originality",
-        example: "The design is a slavish imitation of an earlier work."
-    },
-
-    sleazy: {
-        meaning: "dirty, cheap, or morally unpleasant",
-        example: "They stayed in a sleazy hotel near the station."
-    },
-
-    sleek: {
-        meaning: "smooth and shiny; well-groomed and healthy-looking; fashionable and elegant",
-        example: "The new sports car has a sleek, modern design."
-    },
-
-    sleeper: {
-        meaning: "a person who is sleeping; a wooden support under railway tracks; a railway carriage with beds",
-        example: "We booked a sleeper for the overnight train journey."
-    },
-
-    slick: {
-        meaning: "smooth and effective; clever but not completely honest; smooth and slippery; a layer of oil floating on water",
-        example: "He gave a slick presentation that impressed the investors."
-    },
-
-    slime: {
-        meaning: "a thick, soft, slippery substance; a slimy substance produced by some animals",
-        example: "The pond was covered with a layer of green slime."
-    },
-
-    slimy: {
-        meaning: "covered with or resembling slime; dishonest or unpleasant",
-        example: "The rocks were wet and slimy."
-    },
-
-    slink: {
-        meaning: "to move quietly and secretly; to move in a shy or uncomfortable way",
-        example: "The cat slinked quietly out of the room."
-    },
-
-    slit: {
-        meaning: "a long, narrow cut or opening; to make a long, narrow cut in something",
-        example: "There was a narrow slit in the curtain."
-    },
-
-    slither: {
-        meaning: "to move smoothly and quietly like a snake",
-        example: "The snake slithered through the grass."
-    },
-
-    sliver: {
-        meaning: "a thin, narrow piece broken or cut from something; to break or cut into thin pieces",
-        example: "A sliver of glass was embedded in his finger."
-    },
-
-    slop: {
-        meaning: "to spill or splash liquid",
-        example: "Be careful not to slop the soup onto the table."
-    },
-
-    slouch: {
-        meaning: "to sit, stand, or walk in a lazy, drooping way; a lazy or ineffective person",
-        example: "Don't slouch when you're sitting at your desk."
-    },
-
-    slug: {
-        meaning: "to hit someone very hard; a hard punch; a bullet; a piece of metal used instead of a coin in a machine",
-        example: "He slugged the ball over the left-field fence."
-    },
-
-    slump: {
-        meaning: "to fall or sit heavily; to decrease suddenly and greatly",
-        example: "The economy went into a serious slump."
-    },
-
-    slurry: {
-        meaning: "a thick liquid mixture of water and solid material",
-        example: "The workers pumped the slurry into a storage tank."
-    },
-
-    slur: {
-        meaning: "to speak unclearly; to make an insulting or damaging statement about someone; an insulting or damaging remark",
-        example: "He began to slur his words after drinking too much."
-    },
-
-    smother: {
-        meaning: "to kill by preventing someone from breathing; to cover completely; to suppress or control a feeling",
-        example: "She tried to smother her anger during the meeting."
-    },
-
-    smolder: {
-        meaning: "to burn slowly without producing flames; to continue to exist as a strong but controlled emotion",
-        example: "The fire continued to smolder long after midnight."
-    },
-
-    smug: {
-        meaning: "too pleased with oneself and one's achievements",
-        example: "He looked smug after winning the argument."
-    },
-
-    snag: {
-        meaning: "an unexpected difficulty or problem; a sharp object that catches or tears something; to catch or become caught",
-        example: "We ran into a snag when the computer system stopped working."
-    },
-
-    snare: {
-        meaning: "a trap for catching animals or people; something that attracts someone into a difficult situation; to catch with a trap",
-        example: "He realized too late that the offer was a financial snare."
-    },
-
-    snarl: {
-        meaning: "to growl angrily; to speak angrily or rudely; an angry or threatening sound",
-        example: "The dog snarled at the stranger."
-    },
-
-    snigger: {
-        meaning: "to laugh quietly or secretly in a disrespectful way",
-        example: "The students sniggered when the teacher made a mistake."
-    },
-
-    sniffle: {
-        meaning: "to breathe noisily through the nose, usually because of a cold or crying; a sniffing sound",
-        example: "The child kept sniffling throughout the lesson."
-    },
-
-    snipe: {
-        meaning: "to attack or shoot from a hidden position; to criticize someone unfairly",
-        example: "The two politicians continued to snipe at each other during the debate."
-    },
-
-    sniper: {
-        meaning: "a person trained to shoot at targets from a hidden position",
-        example: "The soldiers were warned that a sniper might be hiding nearby."
-    },
-
-    snivel: {
-        meaning: "to cry or complain in a weak, annoying way",
-        example: "He began to snivel when his mother refused to buy the toy."
-    },
-
-    snooty: {
-        meaning: "behaving as if one is better or more important than other people",
-        example: "The waiter was polite but the manager seemed rather snooty."
-    },
-
-    snorkel: {
-        meaning: "a tube that allows a person to breathe while swimming underwater; to dive or swim using a snorkel",
-        example: "We spent the afternoon snorkeling around the island."
-    },
-
-    snort: {
-        meaning: "to force air noisily through the nose; a noisy sound made by breathing through the nose",
-        example: "The horse snorted and shook its head."
-    },
-
-    snout: {
-        meaning: "the projecting nose and mouth of an animal; something shaped like an animal's nose; a person's nose; an informer to the police; tobacco",
-        example: "The dog lowered its snout and began sniffing the ground."
-    },
-
-    snub: {
-        meaning: "to deliberately ignore or treat someone coldly",
-        example: "She felt hurt when her colleagues snubbed her at the party."
-    },
-
-    snuff: {
-        meaning: "powdered tobacco that is inhaled through the nose; to extinguish a flame",
-        example: "He snuffed out the candle before leaving the room."
-    },
-
-    sobriety: {
-        meaning: "the state of being serious, sensible, and self-controlled; the state of not being drunk",
-        example: "After years of drinking, he decided to return to a life of sobriety."
-    },
-
-    soggy: {
-        meaning: "very wet and soft",
-        example: "The bread became soggy after being left in the soup."
-    },
-
-    sol: {
-        meaning: "the fifth note of the musical scale",
-        example: "The singer held the note sol for several seconds."
-    },
-
-    solace: {
-        meaning: "comfort in a time of sadness or difficulty; to comfort someone",
-        example: "She found solace in music after the loss of her friend."
-    },
-
-    solemnity: {
-        meaning: "seriousness and dignity; a serious or formal ceremony",
-        example: "The solemnity of the occasion made everyone quiet."
-    },
-
-    soliloquy: {
-        meaning: "a speech in which a character in a play speaks their thoughts aloud, especially when alone",
-        example: "The actor delivered a powerful soliloquy in the final scene."
-    },
-
-    solitary: {
-        meaning: "living or being alone; single; remote and rarely visited",
-        example: "He lived a solitary life in a small house in the mountains."
-    },
-
-    solitude: {
-        meaning: "the state of being alone; a lonely or remote place",
-        example: "She enjoyed the peace and solitude of the countryside."
-    },
-
-    solvency: {
-        meaning: "the ability to pay debts and meet financial obligations",
-        example: "The company is taking measures to maintain its solvency."
-    },
-
-    sombre: {
-        meaning: "dark or dull in color; serious, sad, or gloomy",
-        example: "The mood at the meeting was sombre after the announcement."
-    },
-
-    sonar: {
-        meaning: "a system that uses sound waves to detect and locate objects underwater",
-        example: "The submarine used sonar to locate the vessel."
-    },
-
-    sonata: {
-        meaning: "a piece of music written for one or a few instruments",
-        example: "She played a Beethoven sonata on the piano."
-    },
-
-    sophist: {
-        meaning: "a person who uses clever but false arguments to deceive people",
-        example: "The speaker was dismissed as a sophist who cared more about winning than telling the truth."
-    },
-
-    soprano: {
-        meaning: "the highest female singing voice; a singer with the highest female voice",
-        example: "The soprano received a standing ovation after her performance."
-    },
-
-    sordid: {
-        meaning: "morally bad or shameful; dirty and unpleasant",
-        example: "The newspaper revealed the sordid details of the scandal."
-    },
-
-    sortie: {
-        meaning: "a short trip or visit; a military attack or operation; a flight made by one aircraft during a military operation",
-        example: "The fighter aircraft made a sortie over enemy territory."
-    },
-
-    spaniel: {
-        meaning: "a type of hunting dog with long ears and long hair",
-        example: "The brown spaniel followed its owner across the field."
-    },
-
-    spar: {
-        meaning: "a long strong piece of wood or metal used as part of a ship or other structure; to exchange light punches; to argue or disagree with someone",
-        example: "The two politicians often spar over economic policy."
-    },
-
-    sparingly: {
-        meaning: "in a limited or economical way",
-        example: "Use salt sparingly when preparing the dish."
-    },
-
-    spasm: {
-        meaning: "a sudden involuntary movement or contraction; a sudden short period of activity or emotion",
-        example: "A sudden muscle spasm caused severe pain in his back."
-    },
-
-    spasmodic: {
-        meaning: "happening suddenly and irregularly; related to muscle spasms",
-        example: "There were spasmodic bursts of applause throughout the speech."
-    },
-
-    spate: {
-        meaning: "a large number or amount of something that happens suddenly",
-        example: "The region has experienced a spate of violent storms this summer."
-    },
-
-    spatter: {
-        meaning: "to splash or scatter small drops of liquid onto something",
-        example: "Mud spattered his shoes as he walked along the wet road."
-    },
-
-    spatial: {
-        meaning: "related to space or the position and arrangement of things",
-        example: "The game helps children develop their spatial awareness."
-    },
-
-    speckle: {
-        meaning: "a small spot or mark on a surface",
-        example: "The bird's eggs were covered with small brown speckles."
-    },
-
-    spectre: {
-        meaning: "a ghost; a frightening possibility or fear",
-        example: "The spectre of war continued to haunt the country."
-    },
-
-    spectrum: {
-        meaning: "a range of colors produced when light is separated; a wide range of related things",
-        example: "The debate attracted people from across the political spectrum."
-    },
-
-    spew: {
-        meaning: "to forcefully send out liquid, gas, or other material; to vomit",
-        example: "The volcano began to spew ash into the sky."
-    },
-
-    spindle: {
-        meaning: "a thin rod used for spinning or winding; a rotating shaft",
-        example: "The thread was wound around a wooden spindle."
-    },
-
-    spinner: {
-        meaning: "a person who spins thread or yarn",
-        example: "The spinner turned the wool into fine thread."
-    },
-
-    spirited: {
-        meaning: "full of energy, enthusiasm, and liveliness",
-        example: "The team put up a spirited fight despite being behind."
-    },
-
-    spirituality: {
-        meaning: "the quality or state of being concerned with the spirit, religion, or deeper meaning of life",
-        example: "The book explores themes of spirituality and personal growth."
-    },
-
-    spleen: {
-        meaning: "an organ in the body that helps clean the blood; bad temper or anger",
-        example: "He vented his spleen in a series of angry letters."
-    },
-
-    splutter: {
-        meaning: "to speak quickly and with difficulty; to make a series of short, explosive sounds",
-        example: "She spluttered with anger when she heard the accusation."
-    },
-
-    spook: {
-        meaning: "a ghost; to frighten or scare someone",
-        example: "The sudden noise spooked the horses."
-    },
-
-    spore: {
-        meaning: "a tiny reproductive cell produced by plants, fungi, and some microorganisms",
-        example: "Fungi reproduce by producing spores."
-    },
-
-    sporadic: {
-        meaning: "happening occasionally and irregularly",
-        example: "There were sporadic outbreaks of violence in the region."
-    },
-
-    spout: {
-        meaning: "a tube or opening through which liquid flows; a stream of liquid; to send out liquid; to speak rapidly and at length",
-        example: "Water began to spout from the broken pipe."
-    },
-
-    sprawl: {
-        meaning: "to sit, lie, or fall with the arms and legs spread out; to spread out over a large area",
-        example: "The city continues to sprawl into the surrounding countryside."
-    },
-
-    sprint: {
-        meaning: "to run as fast as possible for a short distance",
-        example: "He sprinted across the finish line."
-    },
-
-    spurious: {
-        meaning: "false or not genuine; based on false reasoning",
-        example: "The report was based on a spurious claim that had no scientific evidence."
-    },
-
-    squabble: {
-        meaning: "to argue about something unimportant",
-        example: "The children were squabbling over who would get the last piece of cake."
-    },
-
-    squalid: {
-        meaning: "extremely dirty and unpleasant; morally unpleasant or shameful",
-        example: "The family was living in a small, squalid apartment."
-    },
-
-    squall: {
-        meaning: "a sudden strong wind or storm; a loud cry caused by pain or fear; to cry or scream loudly",
-        example: "A sudden squall forced the sailors to return to shore."
-    },
-
-    squalor: {
-        meaning: "a very dirty and unpleasant condition; disgraceful or morally unpleasant conditions",
-        example: "The report described the extreme squalor in the overcrowded housing."
-    },
-
-    squash: {
-        meaning: "to crush or flatten something; to force into a small space; to suppress something; a game played with rackets and a small ball; a type of vegetable related to pumpkins and zucchini",
-        example: "Be careful not to squash the fruit when you put it in the bag."
-    },
-
-    squawk: {
-        meaning: "to make a loud, harsh sound like a bird; to complain loudly",
-        example: "The parrot began to squawk when someone entered the room."
-    },
-
-    squeak: {
-        meaning: "a short, high-pitched sound; to make a high-pitched sound; to inform on someone",
-        example: "The door began to squeak whenever it was opened."
-    },
-
-    squeal: {
-        meaning: "a long, high-pitched cry or sound",
-        example: "The children let out a squeal of excitement."
-    },
-
-    squeamish: {
-        meaning: "easily made to feel sick or disgusted; easily shocked or nervous",
-        example: "I'm too squeamish to watch scenes involving surgery."
-    },
-
-    squint: {
-        meaning: "to look with partly closed eyes; to have eyes that do not point in the same direction; a partly closed look",
-        example: "She squinted in the bright sunlight."
-    },
-
-    squire: {
-        meaning: "a landowner or gentleman in the English countryside; a local magistrate",
-        example: "The squire owned most of the land surrounding the village."
-    },
-
-    squirm: {
-        meaning: "to twist or move around because of discomfort or embarrassment",
-        example: "The child began to squirm in his chair during the long speech."
-    },
-
-    squirt: {
-        meaning: "to force liquid out in a narrow stream; a narrow stream of liquid; an annoying or self-important person",
-        example: "The children squirted water at each other with plastic bottles."
-    },
-
-    staccato: {
-        meaning: "played or spoken with short, separate sounds",
-        example: "The pianist played the notes in a sharp staccato style."
-    },
-
-    stag: {
-        meaning: "an adult male deer; a male-only event or gathering",
-        example: "We saw a large stag standing at the edge of the forest."
-    },
-
-    staid: {
-        meaning: "calm, serious, old-fashioned, and conservative",
-        example: "The hotel has a rather staid and traditional atmosphere."
-    },
-
-    stalemate: {
-        meaning: "a situation in which no progress can be made; a situation in chess in which neither side can make a move without losing; to cause a situation in which no progress is possible",
-        example: "The negotiations ended in a stalemate."
-    },
-
-    stalk: {
-        meaning: "to follow or approach someone quietly and secretly; to walk in a proud or threatening way",
-        example: "The tiger stalked its prey through the tall grass."
-    },
-
-    stallion: {
-        meaning: "an adult male horse",
-        example: "The powerful stallion ran across the field."
-    },
-
-    stalwart: {
-        meaning: "strong and physically sturdy; loyal and determined; a loyal and reliable supporter",
-        example: "She has been a stalwart supporter of the organization for many years."
-    },
-
-    stamina: {
-        meaning: "physical or mental strength that allows someone to continue doing something for a long time",
-        example: "Running a marathon requires considerable stamina."
-    },
-
-    stampede: {
-        meaning: "a sudden uncontrolled rush of animals or people; to cause animals or people to rush suddenly",
-        example: "The noise caused the horses to stampede."
-    },
-
-    stance: {
-        meaning: "the way someone stands; an attitude, opinion, or position on an issue",
-        example: "The government has taken a firm stance on the issue."
-    },
-
-    standing: {
-        meaning: "social or professional position; the length of time something has continued; permanent or regularly established",
-        example: "She is a respected professor with high standing in her field."
-    },
-
-    stanza: {
-        meaning: "a group of lines forming a section of a poem",
-        example: "The final stanza of the poem changes the tone completely."
-    },
-
-    starboard: {
-        meaning: "the right side of a ship or aircraft when facing forward",
-        example: "The captain ordered the crew to turn to starboard."
-    },
-
-    stardom: {
-        meaning: "the status or position of being a famous entertainer",
-        example: "The young actor rose to stardom after his first major film."
-    },
-
-    stark: {
-        meaning: "very clear and obvious; severe or extreme",
-        example: "There is a stark contrast between the two neighborhoods."
-    },
-
-    surreptitious: {
-        meaning: "done secretly or without being noticed",
-        example: "He took a surreptitious glance at his watch during the meeting."
-    },
-
-    surrogate: {
-        meaning: "a substitute or replacement; a person or thing that acts in place of another",
-        example: "The painting became a surrogate for the lost original."
-    },
-
-    susceptible: {
-        meaning: "easily influenced or affected by something; easily affected by a disease or condition",
-        example: "Young children are particularly susceptible to colds."
-    },
-
-    susceptibility: {
-        meaning: "the state of being easily influenced, affected, or harmed",
-        example: "The study examined the susceptibility of crops to disease."
-    },
-
-    sustenance: {
-        meaning: "food or other things needed to maintain life and health",
-        example: "The hikers carried enough food to provide sustenance for several days."
-    },
-
-    swagger: {
-        meaning: "to walk or behave in a confident and arrogant way; an arrogant or overly confident manner",
-        example: "He swaggered into the room as if he owned the place."
-    },
-
-    swap: {
-        meaning: "to exchange one thing for another; an exchange",
-        example: "The two students agreed to swap seats."
-    },
-
-    swathe: {
-        meaning: "a long, wide strip of grass, plants, or land; a long, wide piece or area",
-        example: "A wide swathe of forest was destroyed by the fire."
-    },
-
-    swine: {
-        meaning: "a pig; an unpleasant or contemptible person or thing",
-        example: "The farmer keeps several swine on his land."
-    },
-
-    swipe: {
-        meaning: "to hit or strike hard",
-        example: "The player swiped at the ball but missed."
-    },
-
-    swirl: {
-        meaning: "to move around in a twisting circular motion; a circular or twisting movement",
-        example: "The leaves swirled around in the wind."
-    },
-
-    swivel: {
-        meaning: "to turn or rotate around a fixed point; a device that allows something to rotate",
-        example: "She swivelled around in her chair to face him."
-    },
-
-    swoop: {
-        meaning: "to move or fly down suddenly to attack or seize something; a sudden downward attack or movement",
-        example: "The eagle swooped down and caught the fish."
-    },
-
-    syndrome: {
-        meaning: "a group of medical signs or symptoms that occur together",
-        example: "The doctor recognized the symptoms as part of a rare syndrome."
-    },
-
-    synopsis: {
-        meaning: "a brief summary of a book, play, film, or other work",
-        example: "The publisher asked the author to provide a brief synopsis of the novel."
-    },
-
-    synoptic: {
-        meaning: "giving a brief general summary or overview",
-        example: "The report provides a synoptic view of the country's economic situation."
-    },
-
-    syphilis: {
-        meaning: "a sexually transmitted infection caused by bacteria",
-        example: "The clinic offers confidential testing for syphilis and other infections."
-    },
-
-scrawny: {
-    meaning: "skinny; very thin",
-    example: "The scrawny boy looked as if he had not eaten enough."
+    tab: {
+    meaning: "a small strip, piece, or label attached to something",
+    example: "Click the tab to open the next section."
 },
 
-scribe: {
-    meaning: "a copyist; a scribe; a Jewish religious scholar",
-    example: "The scribe carefully copied the ancient text by hand."
+tacit: {
+    meaning: "understood or implied without being openly stated",
+    example: "There was a tacit agreement between the two sides."
 },
 
-scrum: {
-    meaning: "a rugby scrum; a confused crowd; a jostling mass of people",
-    example: "The players formed a scrum to compete for the ball."
+tacitly: {
+    meaning: "in a way that is understood or implied without being openly stated",
+    example: "They tacitly agreed to keep the matter private."
 },
 
-scrounge: {
-    meaning: "to obtain something by borrowing, begging, or taking",
-    example: "He managed to scrounge some money from his friends."
+taciturn: {
+    meaning: "speaking very little; reserved and uncommunicative",
+    example: "His taciturn nature made it difficult to get to know him."
 },
 
-scruple: {
-    meaning: "a moral hesitation; a qualm; a unit of weight equal to 1.295 grams; to hesitate because of moral reservations",
-    example: "She had no scruples about telling him the truth."
+tacky: {
+    meaning: "sticky; not yet dry",
+    example: "The paint is still tacky, so don't touch it."
 },
 
-scrupulous: {
-    meaning: "careful; conscientious; meticulous",
-    example: "She is scrupulous about checking every detail of her work."
+tact: {
+    meaning: "skill in dealing with people without offending them; sensitivity and good judgment",
+    example: "She handled the sensitive issue with great tact."
 },
 
-scrutinise: {
-    meaning: "to examine something carefully and thoroughly",
-    example: "The teacher scrutinised the students' answers carefully."
+tactful: {
+    meaning: "careful not to offend or upset people; skilled at dealing with difficult situations politely",
+    example: "He gave her some tactful advice about her presentation."
 },
 
-scuba: {
-    meaning: "an underwater breathing apparatus; scuba",
-    example: "He learned to use scuba equipment before diving into the sea."
+tactical: {
+    meaning: "relating to tactics or a particular plan for achieving a goal; good at planning and strategy; relating to short-range weapons or military operations",
+    example: "The team made a tactical decision to defend rather than attack."
 },
 
-sectarian: {
-    meaning: "sectarian; relating to a religious sect",
-    example: "The conflict was partly caused by sectarian differences."
+tactician: {
+    meaning: "a person who is skilled at planning tactics or strategies",
+    example: "The coach is regarded as an excellent tactician."
 },
 
-scuffle: {
-    meaning: "to fight or struggle roughly; a brief fight",
-    example: "The two men got into a scuffle outside the stadium."
+taffeta: {
+    meaning: "a smooth, shiny fabric usually made from silk or synthetic fibers",
+    example: "She wore a dress made of blue taffeta."
 },
 
-scum: {
-    meaning: "foam or floating waste on the surface of a liquid; a group of bad or contemptible people",
-    example: "A layer of scum had formed on the surface of the pond."
+tailplane: {
+    meaning: "the horizontal stabilizing surface at the rear of an aircraft",
+    example: "The tailplane helps keep the aircraft stable during flight."
 },
 
-scupper: {
-    meaning: "to deliberately sink one's own ship; to cause something to fail; to ruin or destroy",
-    example: "The unexpected expense scuppered their plans for the trip."
+taint: {
+    meaning: "to spoil or contaminate something; a harmful or unpleasant influence, contamination, or stain",
+    example: "The scandal tainted his reputation."
 },
 
-scurf: {
-    meaning: "dandruff; flakes of dead skin",
-    example: "The shampoo helps remove scurf from the scalp."
+tangent: {
+    meaning: "a straight line that touches a curve at one point; the ratio of the opposite side to the adjacent side in a right triangle",
+    example: "The line is tangent to the circle at this point."
 },
 
-scurry: {
-    meaning: "to move or run quickly with short steps; a quick movement with short steps",
-    example: "The children scurried across the playground when it started to rain."
+goOffAtATangent: {
+    meaning: "to suddenly change to a different subject, idea, or course of action",
+    example: "He went off at a tangent and started talking about his childhood."
 },
 
-scuttle: {
-    meaning: "to run with quick, short steps; a quick run; to deliberately sink a ship; a porthole; a hatch or window",
-    example: "The little mouse scuttled across the kitchen floor."
+tanner: {
+    meaning: "a person who treats animal skins to make leather",
+    example: "The tanner worked with animal hides all day."
 },
 
-seaward: {
-    meaning: "toward the sea; coming from the sea (of wind); the direction toward the sea",
-    example: "The strong seaward wind made the boat difficult to control."
+tannic: {
+    meaning: "containing or relating to tannin",
+    example: "Black tea has a slightly tannic taste."
 },
 
-seclude: {
-    meaning: "to isolate; to keep apart; to withdraw from others",
-    example: "He decided to seclude himself in the countryside to finish his book."
+tantalise: {
+    meaning: "to tease or excite someone by showing them something desirable but not allowing them to have it",
+    example: "The advertisement tantalised customers with images of the new product."
 },
 
-secession: {
-    meaning: "withdrawal; separation; secession",
-    example: "The region's secession led to a period of political uncertainty."
+tantalize: {
+    meaning: "to tease or excite someone by showing them something desirable but not allowing them to have it",
+    example: "The smell of fresh bread tantalized us."
 },
 
-secluded: {
-    meaning: "withdrawn; quiet and private; isolated",
-    example: "They found a secluded beach far from the crowded tourist areas."
+tantamount: {
+    meaning: "having the same effect or meaning as something else; equivalent to",
+    example: "Refusing to answer was tantamount to admitting guilt."
 },
 
-secrete: {
-    meaning: "to produce and release a substance from an organ; to hide; to conceal",
-    example: "Certain glands secrete hormones into the bloodstream."
+tantrum: {
+    meaning: "a sudden uncontrolled expression of anger, especially by a child",
+    example: "The child threw a tantrum when his mother said no."
 },
 
-secretive: {
-    meaning: "unwilling to reveal information; close-mouthed",
-    example: "He is very secretive about his personal life."
+taper: {
+    meaning: "to become gradually narrower; to make something gradually narrower; to become or make something gradually smaller or less; a gradual narrowing of a long object",
+    example: "The road tapers as it approaches the village."
 },
 
-sectarian: {
-    meaning: "sectarian; relating to a religious sect",
-    example: "The conflict was partly caused by sectarian differences."
-}
+tapeworm: {
+    meaning: "a long flat parasitic worm that lives in the intestines of humans or animals",
+    example: "The doctor found that the patient had a tapeworm."
+},
+
+tarry: {
+    meaning: "to delay or stay somewhere longer than necessary",
+    example: "We cannot tarry here any longer."
+},
+
+tarnish: {
+    meaning: "to lose or cause something to lose its shine; to damage someone's reputation or make something less valuable",
+    example: "The scandal tarnished the company's reputation."
+},
+
+tart: {
+    meaning: "having a sharp sour taste; sharp or bitter in manner; a small pie filled with fruit or other food; an insulting term for a sexually promiscuous woman",
+    example: "The lemon had a pleasantly tart flavor."
+},
+
+tarry2: {
+    meaning: "relating to or resembling tar; covered with tar",
+    example: "The workers removed the tarry substance from the road."
+},
+
+tartan: {
+    meaning: "a pattern of colored horizontal and vertical stripes crossing each other; woolen cloth with such a pattern, traditionally associated with Scotland",
+    example: "He wore a traditional tartan scarf."
+},
+
+tartly: {
+    meaning: "in a sharp, bitter, or sarcastic manner",
+    example: "She replied tartly to his rude comment."
+},
+
+tatters: {
+    meaning: "pieces of torn or damaged cloth; old and torn clothes",
+    example: "His shirt was reduced to tatters."
+},
+
+inTatters: {
+    meaning: "in a torn and damaged condition; in a ruined or bankrupt condition",
+    example: "After the war, the country's economy was in tatters."
+},
+
+tattoo: {
+    meaning: "a permanent design made by putting ink into the skin; to mark the skin with a permanent design",
+    example: "He has a small tattoo on his arm."
+},
+
+tattooist: {
+    meaning: "a person whose job is to create tattoos",
+    example: "She works as a tattooist in a local studio."
+},
+
+taunt: {
+    meaning: "to mock or insult someone in order to make them angry; an insulting or mocking remark",
+    example: "The other players taunted him after he missed the shot."
+},
+
+taut: {
+    meaning: "stretched tight; tense or highly strained",
+    example: "The rope was pulled taut."
+},
+
+tawdry: {
+    meaning: "cheap and showy in appearance; attractive in a vulgar or insincere way",
+    example: "The room was decorated with tawdry ornaments."
+},
+
+teak: {
+    meaning: "a strong durable tropical hardwood",
+    example: "The table is made of solid teak."
+},
+
+technicality: {
+    meaning: "a technical term or specialized detail; a minor detail or rule that is not important to the main issue",
+    example: "The case was dismissed because of a legal technicality."
+},
+
+technocracy: {
+    meaning: "a system of government in which technical experts manage the country; a country governed in this way",
+    example: "The country was moving toward a form of technocracy."
+},
+
+tedium: {
+    meaning: "the state of being bored because something is repetitive or uninteresting; extreme dullness",
+    example: "He struggled to stay awake during the tedium of the long meeting."
+},
+
+teeter: {
+    meaning: "to move unsteadily from side to side; to be in an unstable position",
+    example: "The old chair teetered on two legs."
+},
+
+tempo: {
+    meaning: "the speed or pace of a piece of music; the speed or rate at which an activity develops or progresses",
+    example: "The song begins at a slow tempo."
+},
+
+temporal: {
+    meaning: "relating to ordinary worldly life rather than spiritual matters; relating to time; relating to the temple of the head",
+    example: "The study examines the temporal changes in the climate."
+},
+
+tendon: {
+    meaning: "a strong band of tissue that connects a muscle to a bone",
+    example: "He injured a tendon in his ankle."
+},
+
+tenet: {
+    meaning: "a principle, belief, or doctrine that is accepted as true",
+    example: "Respect for others is a basic tenet of the organization."
+},
+
+tenor: {
+    meaning: "a male singer with a high singing voice; a musical instrument or part in the tenor range; the general meaning or character of a written or spoken statement",
+    example: "The tenor sang the final part of the opera beautifully."
+},
+
+tensile: {
+    meaning: "relating to tension or stretching; able to be stretched or extended without breaking",
+    example: "The material has high tensile strength."
+},
+
+tentative: {
+    meaning: "not certain or definite; temporary or experimental; hesitant or unsure",
+    example: "We have made a tentative plan for the weekend."
+},
+
+tenuous: {
+    meaning: "very thin or slight; weak, uncertain, or not convincing",
+    example: "There is only a tenuous connection between the two events."
+},
+
+tenure: {
+    meaning: "the period during which someone holds a position or property; permanent employment, especially for a university teacher",
+    example: "She was granted tenure after several years of teaching."
+},
+
+tepid: {
+    meaning: "slightly warm; showing little enthusiasm or interest",
+    example: "The audience gave the speaker a tepid response."
+},
+
+terracotta: {
+    meaning: "baked clay used for making pottery, tiles, or decorative objects",
+    example: "The garden was decorated with terracotta pots."
+},
+
+terrain: {
+    meaning: "a particular type of land or geographical area",
+    example: "The soldiers had to cross difficult terrain."
+},
+
+terrestrial: {
+    meaning: "relating to or living on land; relating to the Earth",
+    example: "Most terrestrial animals live on land."
+},
+
+terry: {
+    meaning: "a type of fabric with loops that absorb water, used for towels and similar products",
+    example: "The hotel provided soft terry towels."
+},
+
+testator: {
+    meaning: "a person who has made a legally valid will",
+    example: "The testator left most of his property to his children."
+},
+
+textual: {
+    meaning: "relating to the words or written form of a text",
+    example: "The researchers conducted a textual analysis of the novel."
+},
+
+tether: {
+    meaning: "a rope or chain used to tie an animal to a fixed point",
+    example: "The horse was kept on a tether."
+},
+
+thatch: {
+    meaning: "straw, reeds, or similar material used for covering a roof; a thick mass of hair; to cover a roof with thatch",
+    example: "The old cottage has a thatched roof."
+},
+
+thee: {
+    meaning: "you, used in older forms of English",
+    example: "The word thee is found frequently in old English texts."
+},
+
+thematic: {
+    meaning: "relating to a theme or subject",
+    example: "The course has a strong thematic focus on university life."
+},
+
+theologian: {
+    meaning: "a person who studies or writes about theology",
+    example: "The theologian wrote a book about religious history."
+},
+
+therapeutic: {
+    meaning: "relating to the treatment or healing of disease or injury",
+    example: "The doctor recommended therapeutic exercises."
+},
+
+thermocouple: {
+    meaning: "a device made of two different metals that measures temperature",
+    example: "The technician used a thermocouple to measure the temperature."
+},
+
+thermodynamics: {
+    meaning: "the branch of physics concerned with heat, energy, and their relationships",
+    example: "Thermodynamics is an important part of mechanical engineering."
+},
+
+thermonuclear: {
+    meaning: "relating to nuclear reactions that occur at extremely high temperatures",
+    example: "The scientists studied thermonuclear reactions."
+},
+
+thicket: {
+    meaning: "a dense group of bushes or small trees",
+    example: "The rabbit disappeared into the thick thicket."
+},
+
+thistle: {
+    meaning: "a prickly plant with sharp leaves and usually purple flowers",
+    example: "A thistle was growing beside the path."
+},
+
+threadbare: {
+    meaning: "worn thin from long use, especially of clothes or fabric; overused and no longer interesting or effective",
+    example: "He was wearing a threadbare old jacket."
+},
+
+throb: {
+    meaning: "to beat or pulse strongly or rapidly; to move, vibrate, or produce sound in a regular rhythm",
+    example: "Her heart began to throb with excitement."
+},
+    throttle: {
+    meaning: "to choke or strangle someone; a valve that controls the flow of a fluid or gas",
+    example: "The police officer stopped the man from throttling his opponent."
+},
+
+throttleBack: {
+    meaning: "to reduce the speed of a vehicle by reducing the supply of fuel or steam",
+    example: "The driver throttled back as the road became dangerous."
+},
+
+throughput: {
+    meaning: "the amount produced or processed within a given period; the total processing capacity of a computer",
+    example: "The new system has greatly increased the factory's throughput."
+},
+
+thud: {
+    meaning: "a dull heavy sound; to move, fall, or hit something with a dull heavy sound",
+    example: "We heard a loud thud when the box fell to the floor."
+},
+
+thug: {
+    meaning: "a violent person, especially a criminal or bully",
+    example: "The police arrested the thug after the fight."
+},
+
+thump: {
+    meaning: "to hit or strike heavily; to make a loud dull sound; a heavy blow or удар",
+    example: "He thumped the table with his fist."
+},
+
+thunderclap: {
+    meaning: "a crash of thunder; a sudden and shocking event or piece of news",
+    example: "The announcement came like a thunderclap."
+},
+
+thunderous: {
+    meaning: "like thunder; extremely loud",
+    example: "The audience gave the performers thunderous applause."
+},
+
+thyroid: {
+    meaning: "a gland in the neck that produces hormones controlling metabolism",
+    example: "The doctor ordered a test to check her thyroid."
+},
+
+tiara: {
+    meaning: "a jeweled crown-like head ornament worn by a woman; the triple crown formerly worn by the Pope",
+    example: "The princess wore a beautiful tiara at the ceremony."
+},
+
+tilt: {
+    meaning: "to cause something to lean or slope; to raise or angle something; an inclined position or slope",
+    example: "She tilted her head to one side."
+},
+
+atFullTilt: {
+    meaning: "at full speed; as fast or energetically as possible",
+    example: "The horse ran at full tilt across the field."
+},
+
+timely: {
+    meaning: "happening or done at the right time; appropriate or suitable in time",
+    example: "The timely warning prevented a serious accident."
+},
+
+tinder: {
+    meaning: "dry material that catches fire easily",
+    example: "The dry leaves provided tinder for the fire."
+},
+
+tinge: {
+    meaning: "to give something a slight color; to give something a slight influence or quality; a slight amount or trace of a color or quality",
+    example: "The sunset tinged the sky with pink."
+},
+
+tingle: {
+    meaning: "to feel a slight sharp or prickling sensation; a slight prickling sensation",
+    example: "My fingers began to tingle in the cold."
+},
+
+tinker: {
+    meaning: "to make small repairs in an unskilled way; an unskilled repair; a person who traditionally traveled around repairing household objects",
+    example: "He spent the afternoon tinkering with the old bicycle."
+},
+
+tinny: {
+    meaning: "not strong or solid because it is made of thin metal; producing a thin metallic sound",
+    example: "The cheap radio produced a tinny sound."
+},
+
+tint: {
+    meaning: "a slight variation of a color; a substance used to color hair; the act of coloring hair; to give something a slight color",
+    example: "The windows have a slight blue tint."
+},
+
+tirade: {
+    meaning: "a long angry speech of criticism or condemnation",
+    example: "The manager launched into a tirade against the new policy."
+},
+
+titan: {
+    meaning: "a very large, strong, intelligent, or important person",
+    example: "He was a titan of the technology industry."
+},
+
+titanic: {
+    meaning: "extremely large or powerful",
+    example: "The project required a titanic effort from the entire team."
+},
+
+tonal: {
+    meaning: "relating to sound or tone",
+    example: "The singer has a rich tonal quality."
+},
+
+tongs: {
+    meaning: "a tool with two arms used for picking up or holding things",
+    example: "Use the tongs to turn the meat over."
+},
+
+tonic: {
+    meaning: "a medicine or drink believed to improve health or strength",
+    example: "The doctor recommended a tonic to help him recover."
+},
+
+topographer: {
+    meaning: "a person who studies or describes the physical features of a particular area",
+    example: "The topographer prepared a detailed map of the mountain region."
+},
+
+torrid: {
+    meaning: "extremely hot and dry; extremely passionate or sexually intense",
+    example: "They spent the summer in a torrid desert climate."
+},
+
+torsion: {
+    meaning: "the act of twisting; a twisted or spiral shape produced by twisting",
+    example: "The engineer tested the bridge for torsion."
+},
+
+torso: {
+    meaning: "the main part of the human body excluding the head, arms, and legs; a sculpture of the human body without the head or limbs",
+    example: "The statue depicts the muscular torso of an athlete."
+},
+
+totalitarian: {
+    meaning: "relating to a system of government in which the state has complete control over people's lives",
+    example: "The novel describes life under a totalitarian regime."
+},
+
+totalitarianism: {
+    meaning: "a political system in which the state exercises complete control over society",
+    example: "The book examines the dangers of totalitarianism."
+},
+
+totter: {
+    meaning: "to walk or move unsteadily; to be unstable and likely to fall",
+    example: "The injured man tottered toward the door."
+},
+
+tout: {
+    meaning: "to promote or sell something aggressively; a person who sells tickets illegally",
+    example: "The company is touting its new product as revolutionary."
+},
+
+tract: {
+    meaning: "a large area of land; a system or group of organs or tissues in the body",
+    example: "They bought a large tract of land outside the city."
+},
+
+tractable: {
+    meaning: "easy to control, manage, or deal with; obedient and easy to handle",
+    example: "The problem proved more tractable than we had expected."
+},
+
+tragedian: {
+    meaning: "a writer of tragedies; an actor who performs tragic roles",
+    example: "Shakespeare is one of the most famous tragedians in English literature."
+},
+
+trait: {
+    meaning: "a particular quality or characteristic of a person's personality",
+    example: "Patience is an important trait for a teacher."
+},
+
+trample: {
+    meaning: "to step heavily on something and damage it; to treat someone or something cruelly or disrespectfully",
+    example: "Please do not trample the flowers."
+},
+
+trance: {
+    meaning: "a state of unconsciousness or hypnosis; a state of being completely absorbed or unaware of one's surroundings",
+    example: "She sat in a trance, staring out of the window."
+},
+
+transcend: {
+    meaning: "to go beyond the limits or range of something; to be better than or superior to someone or something",
+    example: "Her performance transcended all our expectations."
+},
+
+transcendental: {
+    meaning: "extraordinary or superior; beyond ordinary physical experience; relating to transcendental philosophy",
+    example: "The poem explores transcendental ideas about nature."
+},
+
+transcendentalism: {
+    meaning: "a philosophical movement emphasizing intuition, individual experience, and spiritual insight",
+    example: "Transcendentalism had a strong influence on American literature."
+},
+
+transcribe: {
+    meaning: "to copy something in writing; to represent speech using phonetic symbols; to arrange music for another instrument; to make a written or recorded copy",
+    example: "The assistant transcribed the interview from the recording."
+},
+
+transfigure: {
+    meaning: "to change the appearance of something, especially in a way that makes it more beautiful or impressive",
+    example: "The morning sunlight transfigured the ordinary landscape."
+},
+
+transfuse: {
+    meaning: "to transfer blood from one person into another",
+    example: "The patient needed to be transfused with blood."
+},
+
+transient: {
+    meaning: "lasting only for a short time; a person who stays or works in a place only temporarily",
+    example: "The pain was transient and soon disappeared."
+},
+
+transitory: {
+    meaning: "lasting only for a short time; temporary",
+    example: "Happiness can sometimes be transitory."
+},
+
+translucent: {
+    meaning: "allowing some light to pass through but not allowing clear images to be seen",
+    example: "The bathroom window is made of translucent glass."
+},
+
+transmute: {
+    meaning: "to change something into a different form or substance, especially into something better",
+    example: "The artist transmuted his painful experiences into beautiful music."
+},
+
+transmutation: {
+    meaning: "the process of changing something into another form or substance; transformation or evolution",
+    example: "The novel describes the transmutation of fear into courage."
+},
+
+transpire: {
+    meaning: "to become known or be revealed; to happen; to give off water vapor through the surface of a plant",
+    example: "It later transpired that he had known the truth all along."
+},
+
+transpose: {
+    meaning: "to change the position or order of things; to change music into another key",
+    example: "The teacher asked the students to transpose the two sentences."
+},
+
+transposition: {
+    meaning: "the act of changing the positions of things; a change of musical key",
+    example: "The transposition of the two words changed the meaning of the sentence."
+},
+
+trauma: {
+    meaning: "emotional or psychological injury; severe emotional pain or suffering; physical injury",
+    example: "The accident left him with serious emotional trauma."
+},
+
+traverse: {
+    meaning: "to travel or move across an area; the act of crossing; something that crosses or extends across another thing",
+    example: "They spent three days traversing the desert."
+},
+
+treacherous: {
+    meaning: "likely to betray or deceive; dangerous or difficult to deal with",
+    example: "The mountain road becomes treacherous in winter."
+},
+
+treachery: {
+    meaning: "betrayal or disloyalty",
+    example: "The king was shocked by his friend's treachery."
+},
+
+treatise: {
+    meaning: "a formal written work dealing systematically with a particular subject",
+    example: "He wrote a treatise on modern political philosophy."
+},
+
+treble: {
+    meaning: "a boy who sings the highest part in a choir; the highest musical part; high-pitched",
+    example: "The treble voice was clear and beautiful."
+},
+
+trek: {
+    meaning: "a long and difficult journey or trip; to make a long and difficult journey",
+    example: "They went on a long trek through the mountains."
+},
+
+tremor: {
+    meaning: "a slight shaking or trembling movement; a feeling of excitement or fear",
+    example: "A slight tremor ran through her hands."
+},
+
+trespass: {
+    meaning: "to enter someone's land without permission; to use or occupy something improperly; to commit a moral or religious offense; illegal entry onto another person's property; a wrongdoing or offense",
+    example: "The sign warned people not to trespass on the private property."
+},
+
+trestle: {
+    meaning: "a framework used to support something; a structure like a bench supported by two pairs of legs",
+    example: "The workers placed the wooden boards on trestles."
+},
+
+tributary: {
+    meaning: "a river or stream that flows into a larger river; a state or person that pays tribute; flowing into a larger river; subordinate or dependent",
+    example: "The small river is a tributary of the Mississippi."
+},
+
+trill: {
+    meaning: "a rapid vibrating sound made by a person or bird; a rapid alternation between musical notes; a vibrating consonant sound; to produce a vibrating sound or musical note",
+    example: "The bird produced a beautiful trill."
+},
+
+trilogy: {
+    meaning: "a group of three related books, films, plays, or other works",
+    example: "The Lord of the Rings is a famous fantasy trilogy."
+},
+
+trinket: {
+    meaning: "a small decorative object or inexpensive piece of jewelry",
+    example: "She bought a few trinkets while traveling abroad."
+},
+
+tripod: {
+    meaning: "a three-legged stand used to support a camera, telescope, or other equipment",
+    example: "He placed the camera on a tripod."
+},
+
+tripper: {
+    meaning: "a person who goes on a short journey or excursion",
+    example: "The resort is popular with weekend trippers."
+},
+
+trounce: {
+    meaning: "to defeat someone completely; to punish or beat someone severely",
+    example: "Our team trounced its opponents 5–0."
+},
+
+truce: {
+    meaning: "an agreement to stop fighting for a period of time; a temporary cessation of hostilities",
+    example: "The two sides agreed to a temporary truce."
+},
+
+trudge: {
+    meaning: "to walk slowly and with difficulty, especially because of tiredness or difficult conditions",
+    example: "We trudged through the deep snow."
+},
+
+trump: {
+    meaning: "a playing card that has a higher value than cards of other suits; to play a trump card and win; to defeat or surpass",
+    example: "She played her trump and won the hand."
+},
+
+trumpCard: {
+    meaning: "a special advantage or resource that can be used to gain victory",
+    example: "His knowledge of the local market was his trump card."
+},
+
+trundle: {
+    meaning: "to roll or move something slowly and heavily",
+    example: "He trundled the suitcase down the hallway."
+},
+
+trying: {
+    meaning: "extremely annoying, difficult, or unpleasant",
+    example: "Looking after the children all day can be trying."
+},
+
+tryout: {
+    meaning: "a test of a person's ability or a thing's quality or performance; a trial or audition",
+    example: "She went to the basketball team's tryout yesterday."
+},
+
+tuba: {
+    meaning: "a large brass musical instrument with a very low sound",
+    example: "He plays the tuba in the university band."
+},
+
+tubular: {
+    meaning: "shaped like a tube; consisting of or containing tubes",
+    example: "The structure is made of tubular steel."
+},
+
+tuft: {
+    meaning: "a small bunch or cluster of hair, feathers, grass, or similar material",
+    example: "A tuft of grass was growing between the rocks."
+},
+
+tulip: {
+    meaning: "a spring flower that grows from a bulb and has a cup-shaped flower",
+    example: "She planted red tulips in the garden."
+},
+
+tumultuous: {
+    meaning: "confused, violent, or disorderly; very noisy and chaotic",
+    example: "The country went through a tumultuous period of political change."
+},
+
+turbid: {
+    meaning: "cloudy or muddy because of suspended particles; confused or disordered",
+    example: "The river water became turbid after the heavy rain."
+},
+
+turbine: {
+    meaning: "a machine that produces power by using the movement of water, steam, gas, or air to turn a wheel",
+    example: "The wind turbine generates electricity for the village."
+},
+
+turbot: {
+    meaning: "a large flat sea fish used as food",
+    example: "The restaurant serves fresh turbot."
+},
+
+turmoil: {
+    meaning: "a state of great confusion, disorder, or unrest",
+    example: "The country was thrown into political turmoil."
+},
+
+turner: {
+    meaning: "a person who works as a blacksmith or operates a lathe",
+    example: "His grandfather worked as a turner in a local factory."
+},
+
+turnout: {
+    meaning: "the number of people who attend an event; the act of cleaning or clearing something out",
+    example: "There was a large turnout for the university election."
+},
+
+turret: {
+    meaning: "a small tower projecting from a building; a rotating structure carrying a gun",
+    example: "The castle has several stone turrets."
+},
+
+tutelage: {
+    meaning: "protection, supervision, or guardianship; guidance and teaching",
+    example: "She developed her skills under the tutelage of an experienced teacher."
+},
+
+tweed: {
+    meaning: "a rough woolen fabric; clothes made from tweed",
+    example: "He wore a traditional tweed jacket."
+},
+
+twirl: {
+    meaning: "to turn or cause something to turn rapidly; to wind or twist something around; a rapid spinning movement",
+    example: "She twirled the umbrella in her hand."
+},
+
+twitch: {
+    meaning: "a sudden involuntary movement or contraction; to make a sudden involuntary movement",
+    example: "A muscle in his face began to twitch."
+},
+
+typographical: {
+    meaning: "relating to the design, arrangement, or printing of written material",
+    example: "There is a typographical error in the second paragraph."
+},
+
+typography: {
+    meaning: "the art and process of arranging and printing type",
+    example: "Good typography makes a website easier to read."
+},
+
+tyrannical: {
+    meaning: "like a tyrant; cruel, oppressive, or dictatorial",
+    example: "The workers complained about their tyrannical manager."
+},
+
+tyrannize: {
+    meaning: "to rule or treat people in a cruel and oppressive way",
+    example: "The dictator tyrannized the population for many years."
+},
+
+rabbi: {
+    meaning: "a Jewish religious teacher or scholar; a Jewish religious leader",
+    example: "The rabbi spoke to the community after the ceremony."
+},
+
+rabid: {
+    meaning: "affected by rabies; extremely enthusiastic or fanatical",
+    example: "He is a rabid supporter of the team."
+},
+
+rabies: {
+    meaning: "a serious disease caused by a virus, usually transmitted through the bite of an infected animal",
+    example: "The dog was vaccinated against rabies."
+},
+
+racer: {
+    meaning: "a person or animal that takes part in a race; a vehicle designed for racing",
+    example: "The young racer won the championship."
+},
+
+racket: {
+    meaning: "a bat used in tennis or similar sports; a loud unpleasant noise; dishonest or illegal activity for making money",
+    example: "The children were making a terrible racket upstairs."
+},
+
+racketeer: {
+    meaning: "a person who makes money through dishonest or illegal activities, especially extortion",
+    example: "The police arrested several racketeers."
+},
+
+radiance: {
+    meaning: "bright light or a glowing appearance; a healthy and happy appearance",
+    example: "Her face was full of radiance."
+},
+
+radiant: {
+    meaning: "shining brightly; showing great happiness; giving off heat or energy",
+    example: "She looked radiant on her wedding day."
+},
+
+raffle: {
+    meaning: "a competition in which people buy numbered tickets and prizes are given to the winners; to sell something by means of a raffle",
+    example: "She won a laptop in a charity raffle."
+},
+
+raft: {
+    meaning: "a flat floating structure used for traveling on water; to transport or travel on a raft",
+    example: "They crossed the river on a wooden raft."
+},
+
+"a raft of": {
+    meaning: "a large number or amount of something",
+    example: "The report contains a raft of useful suggestions."
+},
+
+rake: {
+    meaning: "a garden tool with a long handle and a row of teeth; to gather, loosen, or level soil with a rake; to sweep or scan over something",
+    example: "He used a rake to gather the fallen leaves."
+},
+
+rakeIn: {
+    meaning: "to earn a large amount of money",
+    example: "The new business is raking in a lot of money."
+},
+
+rakeOut: {
+    meaning: "to find or bring something out by searching or reaching into a place",
+    example: "She raked out the papers from the bottom of the drawer."
+},
+
+rakeUp: {
+    meaning: "to gather or put together with difficulty; to bring up unpleasant old memories or problems",
+    example: "The argument raked up several old disagreements."
+},
+
+RAM: {
+    meaning: "random-access memory; computer memory used to store data temporarily while programs are running",
+    example: "Adding more RAM can make the computer run faster."
+},
+
+ramble: {
+    meaning: "to walk or travel around without a particular purpose; to grow thickly or spread in many directions; a long leisurely walk",
+    example: "We spent the afternoon rambling through the countryside."
+},
+
+rambler: {
+    meaning: "a person who walks for pleasure; a plant that grows and spreads widely",
+    example: "The rambler enjoyed walking along the mountain paths."
+},
+
+rampage: {
+    meaning: "to move around violently and uncontrollably, causing damage",
+    example: "The angry crowd went on a rampage through the streets."
+},
+
+onTheRampage: {
+    meaning: "behaving violently and uncontrollably; extremely angry",
+    example: "The fans were on the rampage after their team lost."
+},
+
+rampant: {
+    meaning: "spreading or increasing quickly and uncontrollably; growing too thickly",
+    example: "Corruption was rampant in the organization."
+},
+
+rampart: {
+    meaning: "a wide defensive wall or earthwork around a castle or town; protection or defense",
+    example: "The soldiers stood on the castle ramparts."
+},
+
+rancid: {
+    meaning: "having an unpleasant smell or taste because fat or oil has gone bad",
+    example: "The butter had a rancid smell."
+},
+
+rancour: {
+    meaning: "deep and lasting hatred or resentment",
+    example: "Years of rancour divided the two families."
+},
+
+randy: {
+    meaning: "sexually excited or sexually aggressive",
+    example: "The character is portrayed as a rather randy young man."
+},
+
+rap: {
+    meaning: "a quick light knock; talk or speech; to knock quickly; to criticize or scold; to talk continuously",
+    example: "She rapped on the door before entering."
+},
+
+beatTheRap: {
+    meaning: "to avoid punishment or conviction for a crime",
+    example: "The suspect hired a lawyer and hoped to beat the rap."
+},
+
+takeTheRap: {
+    meaning: "to accept punishment or blame for something, especially for someone else's actions",
+    example: "He took the rap for the mistake made by his team."
+},
+
+rapist: {
+    meaning: "a person who commits rape",
+    example: "The police arrested the suspected rapist."
+},
+
+rapport: {
+    meaning: "a friendly and harmonious relationship in which people understand each other",
+    example: "The teacher quickly established a good rapport with her students."
+},
+
+rapprochement: {
+    meaning: "the restoration of friendly relations, especially between countries or groups",
+    example: "The two countries are working toward a rapprochement."
+},
+
+rapt: {
+    meaning: "completely absorbed or fascinated by something",
+    example: "The children listened with rapt attention."
+},
+
+rapture: {
+    meaning: "a feeling of great happiness, delight, or excitement",
+    example: "She listened to the music in a state of rapture."
+},
+
+rarity: {
+    meaning: "the state of being rare; something that is rare or unusually valuable",
+    example: "Snow is a rarity in this part of the country."
+},
+
+rasp: {
+    meaning: "to file or scrape something with a rough tool; to speak in a rough harsh voice; a rough file; a harsh scraping sound",
+    example: "His voice rasped with anger."
+},
+
+ratchet: {
+    meaning: "a device with toothed parts that allows movement in one direction only",
+    example: "Use a ratchet to tighten the bolt."
+},
+
+rateable: {
+    meaning: "subject to taxation, especially in relation to property",
+    example: "The building is rateable for local tax purposes."
+},
+
+rationale: {
+    meaning: "the basic reason or theoretical basis for an action, decision, or system",
+    example: "The report explains the rationale behind the new policy."
+},
+
+rationalize: {
+    meaning: "to give reasons or explanations for something; to make a system or process more efficient or reasonable",
+    example: "The company rationalized its production process."
+},
+
+rattle: {
+    meaning: "to make or cause a series of quick sharp sounds; to move or happen very quickly; to make someone nervous or upset",
+    example: "The windows rattled during the storm."
+},
+
+rattleOff: {
+    meaning: "to say or recite something quickly and easily from memory",
+    example: "He rattled off all the names without looking at his notes."
+},
+
+rattleOn: {
+    meaning: "to talk continuously and boringly",
+    example: "He kept rattling on about his new car."
+},
+
+rattleThrough: {
+    meaning: "to do something quickly and without giving it much attention",
+    example: "She rattled through the report in less than an hour."
+},
+
+ravine: {
+    meaning: "a deep narrow valley with steep sides",
+    example: "A small stream flowed through the ravine."
+},
+
+ravish: {
+    meaning: "to fill someone with intense pleasure or delight",
+    example: "The beauty of the landscape ravished her."
+},
+
+reaffirm: {
+    meaning: "to state or confirm something again, especially to make it clear that it is still true",
+    example: "The government reaffirmed its commitment to education."
+},
+
+rearguard: {
+    meaning: "the part of an army that protects the rear of a moving force",
+    example: "The rearguard stayed behind to protect the retreating army."
+},
+
+reassure: {
+    meaning: "to make someone feel less worried or afraid; to remove someone's doubts",
+    example: "The doctor reassured her that everything was fine."
+},
+
+rebate: {
+    meaning: "a reduction or partial refund of money, especially on a tax or purchase",
+    example: "Customers can receive a tax rebate on the purchase."
+},
+
+rebound: {
+    meaning: "to bounce back after hitting something; to recover or return to a previous condition; a return or bounce back",
+    example: "The ball rebounded off the wall."
+},
+
+onTheRebound: {
+    meaning: "recovering emotionally from disappointment or a failed relationship",
+    example: "He started dating again while still on the rebound."
+},
+
+recapture: {
+    meaning: "to capture again; to regain control of a place; to experience or express something again; the act of capturing or experiencing again",
+    example: "The army recaptured the city after several days of fighting."
+},
+
+recipient: {
+    meaning: "a person or organization that receives something",
+    example: "She was the recipient of a university scholarship."
+},
+
+reciprocate: {
+    meaning: "to exchange something with another person; to return a favor or feeling; to move repeatedly back and forth",
+    example: "She smiled at him, and he reciprocated."
+},
+
+reciprocity: {
+    meaning: "the practice or principle of exchanging things or actions mutually; mutual benefit or mutual concessions",
+    example: "The agreement is based on reciprocity between the two countries."
+},
+
+recital: {
+    meaning: "a public performance by a singer or musician; a detailed account of events; the act of reciting something aloud",
+    example: "She gave a piano recital at the university."
+},
+
+recline: {
+    meaning: "to lean back or lie down in a comfortable position",
+    example: "He reclined in the chair and closed his eyes."
+},
+
+recompense: {
+    meaning: "payment or reward for work or service; compensation for loss or damage",
+    example: "She received financial recompense for the damage to her property."
+},
+
+reconciliation: {
+    meaning: "the restoration of friendly relations; the ending of a disagreement; the process of making two things consistent",
+    example: "The meeting was an important step toward reconciliation."
+},
+
+recount1: {
+    meaning: "to tell or describe an event in detail",
+    example: "He recounted what had happened during the meeting."
+},
+
+recount2: {
+    meaning: "to count something again; to check a count",
+    example: "The officials recounted the votes."
+},
+
+recoup: {
+    meaning: "to recover money or something that has been lost",
+    example: "The company hopes to recoup its investment within two years."
+},
+
+recourse: {
+    meaning: "a person or thing that can be turned to for help or protection",
+    example: "When negotiations failed, they had no recourse but to go to court."
+},
+
+haveRecourseTo: {
+    meaning: "to turn to someone or something for help or support",
+    example: "They had to have recourse to legal action."
+},
+
+rectification: {
+    meaning: "the act of correcting something; the correction of an error; purification or refinement",
+    example: "The company issued a statement to explain the rectification of the error."
+},
+
+rectify: {
+    meaning: "to correct or fix something that is wrong",
+    example: "We need to rectify the mistake as soon as possible."
+},
+
+rectitude: {
+    meaning: "morally correct behavior; honesty and strong moral principles",
+    example: "He was respected for his honesty and rectitude."
+},
+
+rector: {
+    meaning: "a priest in charge of a parish or church",
+    example: "The rector welcomed the visitors to the church."
+},
+
+recur: {
+    meaning: "to happen again, especially repeatedly; to return to someone's thoughts or memory",
+    example: "The same problem continued to recur."
+},
+
+recurrent: {
+    meaning: "happening repeatedly or regularly",
+    example: "He suffered from recurrent headaches."
+},
+
+redbrick: {
+    meaning: "describing a British university established mainly in the nineteenth century or later",
+    example: "She studied at a famous redbrick university."
+},
+
+redemption: {
+    meaning: "the act of buying back something; an act that corrects or compensates for a wrong; the fulfillment of a promise",
+    example: "The novel tells a story of guilt and redemption."
+},
+
+beyondRedemption: {
+    meaning: "impossible to save, correct, or improve",
+    example: "The situation seemed to be beyond redemption."
+},
+
+redemptive: {
+    meaning: "having the power to save, improve, or make up for something bad",
+    example: "The experience had a redemptive effect on him."
+},
+
+redolent: {
+    meaning: "having a strong smell; strongly reminding someone of something",
+    example: "The room was redolent of fresh flowers."
+},
+
+redraw: {
+    meaning: "to draw or define again, especially boundaries; to revise or modify a plan",
+    example: "The government decided to redraw the electoral boundaries."
+},
+
+redress: {
+    meaning: "to correct a wrong or unfair situation; compensation for a wrong or injury",
+    example: "The organization promised to redress the problem."
+},
+
+redressTheBalance: {
+    meaning: "to restore a situation to a fair or balanced state",
+    example: "The new policy was designed to redress the balance between the two groups."
+},
+
+reductioAdAbsurdum: {
+    meaning: "a method of proving an argument by showing that it leads to an absurd or impossible conclusion",
+    example: "The philosopher used reductio ad absurdum to challenge the argument."
+},
+
+redundancy: {
+    meaning: "the state of being excessive or unnecessary; dismissal from a job because there are too many employees; unnecessary repetition in language or art",
+    example: "The report contains a lot of redundancy."
+},
+
+redundant: {
+    meaning: "unnecessary or excessive; no longer needed because there are too many employees",
+    example: "Several sentences in the paragraph are redundant."
+},
+
+reedy: {
+    meaning: "full of reeds; having a high, thin, unpleasant sound",
+    example: "He spoke in a reedy voice."
+},
+
+reExamine: {
+    meaning: "to examine or question again, especially a witness in court",
+    example: "The lawyer asked to re-examine the witness."
+},
+
+referendum: {
+    meaning: "a vote in which the people of a country or region decide directly on an important political issue",
+    example: "The government held a referendum on the proposed constitution."
+},
+
+refinery: {
+    meaning: "a factory where a raw substance such as oil or sugar is purified and processed",
+    example: "The oil refinery is located near the coast."
+},
+
+refurbish: {
+    meaning: "to clean, repair, and improve an old building or object",
+    example: "The university plans to refurbish the old library."
+},
+
+refutation: {
+    meaning: "the act of proving that an argument or claim is wrong; evidence or an argument that disproves something",
+    example: "The paper provides a strong refutation of the theory."
+},
+
+regal: {
+    meaning: "relating to a king or queen; grand, impressive, or majestic",
+    example: "The palace has a regal appearance."
+},
+
+regarding: {
+    meaning: "about; concerning",
+    example: "I am writing regarding your recent request."
+},
+
+regatta: {
+    meaning: "a competition involving boats or rowing races",
+    example: "The university holds an annual rowing regatta."
+},
+
+regent: {
+    meaning: "a person who governs a country while the monarch is unable to rule; a member of the governing board of some universities",
+    example: "The regent ruled the kingdom until the young king came of age."
+},
+
+regeneration: {
+    meaning: "the process of becoming new or being restored; renewal or revival",
+    example: "The project aims to promote the regeneration of the old neighborhood."
+},
+
+registrar: {
+    meaning: "an official responsible for keeping records; a university official responsible for registration, examinations, and academic records; a doctor in specialist training",
+    example: "Students should contact the registrar about course registration."
+},
+
+regress: {
+    meaning: "to return to a worse or less developed state; to move backward",
+    example: "Without regular practice, his skills began to regress."
+},
+
+regression: {
+    meaning: "a return to a previous or less developed state",
+    example: "The patient's condition showed signs of regression."
+},
+
+regressive: {
+    meaning: "causing or involving a return to a less advanced condition",
+    example: "The policy could have a regressive effect on society."
+},
+
+regularity: {
+    meaning: "the quality of being regular, consistent, or occurring at predictable intervals",
+    example: "Exercise can improve the regularity of your sleep."
+},
+
+reimburse: {
+    meaning: "to pay back money that someone has spent or lost",
+    example: "The company will reimburse employees for travel expenses."
+},
+
+rein: {
+    meaning: "a strap used to control a horse; to control a horse with reins",
+    example: "The rider pulled on the reins to slow the horse."
+},
+
+giveFreeReinTo: {
+    meaning: "to allow someone or something to develop or act freely without control",
+    example: "The teacher gave the students free rein to develop their own ideas."
+},
+
+keepATightReinOn: {
+    meaning: "to control or restrict someone or something strictly",
+    example: "The manager keeps a tight rein on spending."
+},
+
+reinstate: {
+    meaning: "to give someone back a position, job, or status that they previously held",
+    example: "The university decided to reinstate the student."
+},
+
+rejuvenate: {
+    meaning: "to make someone or something look or feel younger, fresher, or more energetic",
+    example: "A short vacation helped rejuvenate him."
+},
+
+relapse: {
+    meaning: "to become ill again after improving; to return to a bad habit or previous condition",
+    example: "The patient relapsed several months after treatment."
+},
+
+relegate: {
+    meaning: "to move someone or something to a lower position, level, or status",
+    example: "The team was relegated to a lower division."
+},
+
+relent: {
+    meaning: "to become less strict or severe; to become more merciful; to become less intense",
+    example: "The rain finally relented in the afternoon."
+},
+
+relentless: {
+    meaning: "strict and refusing to give in; continuing without stopping or weakening",
+    example: "The team faced relentless pressure from its opponents."
+},
+
+relinquish: {
+    meaning: "to give up or abandon something; to release or let go of something",
+    example: "He was forced to relinquish control of the company."
+},
+
+relish: {
+    meaning: "a strong enjoyment or liking of something; a sauce or food served with a meal; to enjoy something greatly",
+    example: "She relished the opportunity to study abroad."
+},
+
+remedial: {
+    meaning: "intended to correct or improve a problem; designed to provide extra instruction for students who need help",
+    example: "Some students need remedial English classes."
+},
+
+remembrance: {
+    meaning: "the act of remembering someone or something; something kept to help people remember",
+    example: "The statue was built in remembrance of the soldiers."
+},
+
+reminiscent: {
+    meaning: "reminding someone of a particular person, place, or experience",
+    example: "The song is reminiscent of my childhood."
+},
+
+remission: {
+    meaning: "forgiveness of sins; a reduction of a punishment; cancellation or reduction of a debt or fee; a period when an illness becomes less severe",
+    example: "The patient has been in remission for several years."
+},
+
+remit: {
+    meaning: "to cancel or reduce a punishment or debt; to make something less severe; to send money; to refer a matter to an authority",
+    example: "Please remit the payment by the end of the month."
+},
+
+remittance: {
+    meaning: "an amount of money that is sent to someone, especially as payment",
+    example: "The company received the remittance yesterday."
+},
+
+remnant: {
+    meaning: "a small amount left after most of something has been used or destroyed; a leftover piece of cloth",
+    example: "Only a small remnant of the old building remains."
+},
+
+remorse: {
+    meaning: "deep regret and guilt for something wrong that one has done",
+    example: "He showed genuine remorse for his actions."
+},
+
+remorseful: {
+    meaning: "feeling or showing deep regret and guilt",
+    example: "She was remorseful after realizing her mistake."
+},
+
+remorseless: {
+    meaning: "showing no regret or pity; continuing without stopping or weakening",
+    example: "The remorseless attack continued throughout the night."
+},
+
+remunerate: {
+    meaning: "to pay or reward someone for work or services",
+    example: "Employees are fairly remunerated for their work."
+},
+
+remuneration: {
+    meaning: "payment or financial reward for work or services",
+    example: "The position offers attractive remuneration."
+},
+
+rend: {
+    meaning: "to tear or split something violently; to take something away by force",
+    example: "The strong wind rent the sail."
+},
+
+rendezvous: {
+    meaning: "an arranged meeting; a place where people meet",
+    example: "They agreed to meet at a quiet rendezvous outside the city."
+},
+
+rendition: {
+    meaning: "a performance or interpretation of a piece of music or art; a translation or version of something",
+    example: "Her rendition of the song was beautiful."
+},
+
+renegade: {
+    meaning: "a person who abandons or betrays a group, country, or cause",
+    example: "The renegade general joined the enemy."
+},
+
+renown: {
+    meaning: "great fame or reputation",
+    example: "The scientist achieved international renown."
+},
+
+renunciation: {
+    meaning: "the act of giving up something or breaking contact with it; self-denial or rejection of personal interests",
+    example: "His renunciation of wealth surprised everyone."
+},
+
+reorient: {
+    meaning: "to change or adjust the direction, focus, or approach of something",
+    example: "The company needs to reorient its strategy."
+},
+
+repellent: {
+    meaning: "causing strong dislike or disgust; preventing something from passing through; a substance used to keep insects or water away",
+    example: "We applied insect repellent before going into the forest."
+},
+
+repentance: {
+    meaning: "deep regret for one's wrongdoing; the act of admitting one's sins and changing one's behavior",
+    example: "He expressed sincere repentance for his actions."
+},
+
+repercussion: {
+    meaning: "an indirect or long-lasting effect of an action or event",
+    example: "The decision could have serious repercussions."
+},
+
+repertoire: {
+    meaning: "the complete range of works that a performer or group is prepared to perform",
+    example: "The pianist has a large repertoire of classical music."
+},
+
+repine: {
+    meaning: "to complain or feel unhappy about something",
+    example: "He repined over the loss of his old job."
+},
+
+replenish: {
+    meaning: "to fill something again; to supply something that has been used up",
+    example: "The workers replenished the shelves with fresh products."
+},
+
+replica: {
+    meaning: "an exact or very close copy of something; a smaller model or copy",
+    example: "The museum displayed a replica of the ancient statue."
+},
+
+replicate: {
+    meaning: "to make an exact copy of something; to reproduce a result or process",
+    example: "Scientists tried to replicate the experiment."
+},
+
+repository: {
+    meaning: "a place where things are stored; a collection or storage facility for information or materials",
+    example: "The website is a repository of useful teaching materials."
+},
+
+repress: {
+    meaning: "to control or hold back feelings or thoughts; to use force to suppress people or opposition",
+    example: "He tried to repress his anger."
+},
+
+repression: {
+    meaning: "the act of controlling or suppressing something; the suppression of unwanted desires or thoughts",
+    example: "Emotional repression can make it difficult to express feelings."
+},
+
+repressive: {
+    meaning: "controlling people harshly; using laws or systems to suppress freedom or opposition",
+    example: "The country was ruled by a repressive government."
+},
+
+reprimand: {
+    meaning: "to officially criticize or scold someone for doing something wrong",
+    example: "The manager reprimanded him for being late."
+},
+
+reprisal: {
+    meaning: "an act of retaliation or revenge",
+    example: "The attack was carried out in reprisal for the earlier incident."
+},
+
+reprove: {
+    meaning: "to criticize or blame someone for doing something wrong",
+    example: "The teacher reproved him for cheating."
+},
+
+repudiate: {
+    meaning: "to deny or reject something; to refuse to accept something; to refuse to pay a debt or fulfill an obligation",
+    example: "The government repudiated the accusation."
+},
+
+repugnant: {
+    meaning: "extremely unpleasant or offensive; causing strong disgust",
+    example: "They found the idea morally repugnant."
+},
+
+repulse: {
+    meaning: "to drive back or defeat an attack; to reject or repel someone; an act of driving back or rejecting",
+    example: "The army successfully repulsed the attack."
+},
+
+repulsion: {
+    meaning: "the act of driving something away or defeating an attack; a strong feeling of disgust; a force that pushes objects apart",
+    example: "She felt a strong sense of repulsion toward the smell."
+},
+
+repulsive: {
+    meaning: "extremely unpleasant or disgusting; causing strong dislike",
+    example: "The smell was absolutely repulsive."
+},
+
+reputable: {
+    meaning: "having a good reputation; respected and trustworthy",
+    example: "Choose a reputable company when buying a used car."
+},
+
+repute: {
+    meaning: "the opinion generally held about someone or something; a good reputation",
+    example: "The university is held in high repute."
+},
+
+requiem: {
+    meaning: "a Christian mass for the dead; a piece of music written in memory of someone who has died",
+    example: "The composer wrote a requiem for the victims."
+},
+
+requisite: {
+    meaning: "necessary or essential",
+    example: "A passport is a requisite for international travel."
+},
+
+requisition: {
+    meaning: "a formal request for something; an official order to take or use something; to formally request or order something",
+    example: "The department submitted a requisition for new computers."
+},
+
+reservist: {
+    meaning: "a member of a military reserve force",
+    example: "Several reservists were called back to duty."
+},
+
+reshape: {
+    meaning: "to give something a new shape; to reorganize or change something significantly",
+    example: "Technology is reshaping the way we work."
+},
+
+reshuffle: {
+    meaning: "to reorganize people or positions; to shuffle cards again; a reorganization",
+    example: "The company reshuffled its management team."
+},
+
+resigned: {
+    meaning: "accepting something unpleasant without trying to resist or change it",
+    example: "She seemed resigned to the decision."
+},
+
+beResignedTo: {
+    meaning: "to accept something unpleasant as unavoidable",
+    example: "He was resigned to working late."
+},
+
+resilience: {
+    meaning: "the ability to recover from difficulties; the ability to return to an original shape; an optimistic ability to cope with problems",
+    example: "Her resilience helped her recover from the setback."
+},
+
+resin: {
+    meaning: "a sticky substance produced by some plants; a synthetic substance used in making plastics and other materials",
+    example: "The table was coated with clear resin."
+},
+
+resinous: {
+    meaning: "containing or resembling resin",
+    example: "The tree has a resinous smell."
+},
+
+resounding: {
+    meaning: "echoing loudly; very great or impressive",
+    example: "The proposal received a resounding success."
+},
+
+respectability: {
+    meaning: "the quality of being socially respected and considered proper or acceptable",
+    example: "The family was known for its respectability."
+},
+
+respite: {
+    meaning: "a short period of rest or relief; a delay in carrying out a duty or punishment",
+    example: "The weekend gave him a welcome respite from work."
+},
+
+resplendent: {
+    meaning: "very beautiful, impressive, and brightly colored or decorated",
+    example: "The palace looked resplendent in the evening light."
+},
+
+restitution: {
+    meaning: "the return of something to its original owner or condition; compensation for loss or damage",
+    example: "The court ordered him to pay restitution to the victims."
+},
+
+resultant: {
+    meaning: "resulting from a particular cause or situation",
+    example: "The resultant damage was greater than expected."
+},
+
+resumption: {
+    meaning: "the act of starting again after a pause; the act of taking something back",
+    example: "The resumption of classes was delayed by the storm."
+},
+
+resurgent: {
+    meaning: "becoming strong, active, or popular again",
+    example: "The city is experiencing a resurgent economy."
+},
+
+resurrect: {
+    meaning: "to bring someone back to life; to bring an old idea, practice, or system back into use",
+    example: "The company resurrected an old product design."
+},
+
+resurrection: {
+    meaning: "the act of returning to life; the revival of something; in Christianity, the return of the dead to life at the Last Judgment; the rising of Jesus from the dead",
+    example: "The story describes the resurrection of an ancient tradition."
+},
+
+resuscitation: {
+    meaning: "the act of bringing someone back to life or restoring consciousness",
+    example: "The patient required immediate resuscitation."
+},
+
+retaliate: {
+    meaning: "to take action against someone in response to an attack or injury",
+    example: "The country threatened to retaliate against the attackers."
+},
+
+retard: {
+    meaning: "to slow down or delay something; to hinder or obstruct progress",
+    example: "Poor communication can retard the development of a project."
+},
+
+retention: {
+    meaning: "the ability to keep something; the ability to remember information; the act of holding or keeping something",
+    example: "Regular review improves vocabulary retention."
+},
+
+reticent: {
+    meaning: "unwilling to talk openly about one's thoughts or feelings",
+    example: "He was reticent about his personal life."
+},
+
+retribution: {
+    meaning: "punishment for wrongdoing; something unpleasant received as a consequence of one's actions",
+    example: "The criminal feared retribution from his former enemies."
+},
+
+retrievable: {
+    meaning: "able to be found, recovered, or obtained again, especially from a computer system",
+    example: "All the documents are stored in a retrievable format."
+},
+
+retrieval: {
+    meaning: "the act of finding and obtaining information or something that has been stored or lost",
+    example: "The database allows fast information retrieval."
+},
+
+retrieve: {
+    meaning: "to find and bring back something; to recover or correct something",
+    example: "The dog ran to retrieve the ball."
+},
+
+retrospect: {
+    meaning: "a review or consideration of past events",
+    example: "In retrospect, the decision was a mistake."
+},
+
+retrospective: {
+    meaning: "looking back at past events; having an effect that applies to a past period",
+    example: "The museum held a retrospective exhibition of her work."
+},
+
+revamp: {
+    meaning: "to revise, rebuild, or improve something",
+    example: "The university plans to revamp its website."
+},
+
+revel: {
+    meaning: "to enjoy oneself in a lively or noisy way; a lively celebration or party",
+    example: "The students reveled late into the night."
+},
+
+revere: {
+    meaning: "to respect and admire someone deeply, especially for religious reasons",
+    example: "The people revere the ancient philosopher."
+},
+
+reverence: {
+    meaning: "deep respect, admiration, or awe",
+    example: "The students treated the historic building with reverence."
+},
+
+reverend: {
+    meaning: "deserving respect; a title used for a Christian minister",
+    example: "The Reverend Smith led the service."
+},
+
+reverent: {
+    meaning: "showing deep respect or devotion, especially toward religion",
+    example: "The visitors remained reverent throughout the ceremony."
+},
+
+reverie: {
+    meaning: "a pleasant state of being lost in one's thoughts; a daydream",
+    example: "She sat by the window, lost in reverie."
+},
+
+reversion: {
+    meaning: "a return to a previous state or condition; the future return of property to its former owner",
+    example: "The policy marked a reversion to an older system."
+},
+
+revert: {
+    meaning: "to return to a previous state; to return to an earlier topic or idea; to return to a previous owner",
+    example: "After trying the new method, they reverted to the old one."
+},
+
+revoke: {
+    meaning: "to officially cancel or withdraw a law, decision, license, or permission",
+    example: "The university revoked his access to the laboratory."
+},
+
+revulsion: {
+    meaning: "a strong feeling of disgust; a sudden and powerful change in emotion",
+    example: "She felt revulsion at the sight of the injured animal."
+},
+
+rhinoceros: {
+    meaning: "a large heavy animal with thick skin and one or two horns on its nose",
+    example: "We saw a rhinoceros at the wildlife park."
+},
+
+haveASkinLikeARhinoceros: {
+    meaning: "to be insensitive to attacks, criticism, or insults",
+    example: "A politician needs to have a skin like a rhinoceros."
+},
+
+ribald: {
+    meaning: "humorous in a vulgar, rude, or sexually offensive way",
+    example: "The comedian was known for his ribald jokes."
+},
+
+rickets: {
+    meaning: "a disease in children caused by a lack of vitamin D, resulting in weak or poorly developed bones",
+    example: "A lack of vitamin D can cause rickets."
+},
+
+rickety: {
+    meaning: "weak, unstable, or likely to collapse",
+    example: "We crossed the bridge carefully because it looked rickety."
+},
+
+rickshaw: {
+    meaning: "a small vehicle pulled by a person; a three-wheeled vehicle used for carrying passengers",
+    example: "We took a rickshaw through the old town."
+},
+
+rift: {
+    meaning: "a crack or narrow opening; a serious disagreement or division",
+    example: "A political rift developed between the two groups."
+},
+
+rig: {
+    meaning: "to equip a ship with sails and ropes; a set of equipment or machinery; the arrangement of equipment",
+    example: "The crew rigged the boat before leaving the harbor."
+},
+
+rigOut: {
+    meaning: "to dress someone in unusual or funny clothes",
+    example: "They rigged him out in a ridiculous costume."
+},
+
+rigUp: {
+    meaning: "to assemble or make something quickly and roughly",
+    example: "We rigged up a temporary shelter."
+},
+
+rig2: {
+    meaning: "to control or manipulate something dishonestly for personal advantage",
+    example: "The company was accused of rigging the market."
+},
+
+righteous: {
+    meaning: "morally good and honest; morally justified or fair",
+    example: "He believed that he was fighting for a righteous cause."
+},
+
+rigmarole: {
+    meaning: "a complicated and unnecessary procedure; a long and confusing story or explanation",
+    example: "I don't want to go through all that bureaucratic rigmarole."
+},
+
+rigorous: {
+    meaning: "very strict or demanding; extremely careful and precise; severe or harsh",
+    example: "The researchers followed a rigorous testing procedure."
+},
+
+rime: {
+    meaning: "a thin layer of ice or frost formed on surfaces",
+    example: "The trees were covered with white rime."
+},
+
+rind: {
+    meaning: "the tough outer skin of fruit, cheese, bacon, or similar foods",
+    example: "Remove the rind before eating the cheese."
+},
+
+rink: {
+    meaning: "a specially prepared place for skating or playing ice hockey",
+    example: "The students went skating at the ice rink."
+},
+
+rinse: {
+    meaning: "to wash something lightly with clean water; the act of washing with water; a liquid used for rinsing or coloring hair",
+    example: "Rinse the vegetables thoroughly before cooking."
+},
+
+rinseOut: {
+    meaning: "to wash dirt or something unwanted out of something with water",
+    example: "Rinse the bottle out before using it again."
+},
+
+ripRoaring: {
+    meaning: "very lively, noisy, and exciting; very large or powerful",
+    example: "They had a rip-roaring party after the game."
+},
+
+rivet: {
+    meaning: "a metal pin used to join pieces together; to join with rivets; to hold something firmly; to attract and hold someone's attention",
+    example: "The movie riveted the audience from beginning to end."
+},
+
+roach: {
+    meaning: "a cockroach; the end of a marijuana cigarette after most of it has been smoked",
+    example: "A roach suddenly appeared in the kitchen."
+},
+
+robust: {
+    meaning: "strong and healthy; strong, energetic, and able to withstand difficult conditions",
+    example: "The company needs a robust system that can handle heavy traffic."
+},
+
+rocker: {
+    meaning: "a curved bar or part that allows something to rock; a rocking mechanism",
+    example: "The chair has wooden rockers."
+},
+
+rodent: {
+    meaning: "a mammal such as a mouse, rat, squirrel, or beaver with strong front teeth",
+    example: "The mouse is a common type of rodent."
+},
+
+rodeo: {
+    meaning: "an event in which cowboys catch and control cattle; a competition involving cowboy skills",
+    example: "The town holds a rodeo every summer."
+},
+
+roger: {
+    meaning: "used in radio communication to mean that a message has been received and understood",
+    example: "Roger. I'll meet you at the station at six."
+},
+
+rollingStock: {
+    meaning: "the railway vehicles used for transporting passengers or goods",
+    example: "The company plans to replace its old rolling stock."
+},
+
+rookie: {
+    meaning: "a new or inexperienced person; a new member of a team or organization",
+    example: "The rookie quickly became one of the team's best players."
+},
+
+roost: {
+    meaning: "a place where birds rest or sleep; to settle or rest, especially as a bird",
+    example: "The chickens returned to the roost at sunset."
+},
+
+rooster: {
+    meaning: "an adult male chicken",
+    example: "The rooster woke everyone up early."
+},
+
+rosette: {
+    meaning: "a rose-shaped decoration or badge; a rose-shaped design carved or formed on an object",
+    example: "The winner wore a blue rosette."
+},
+
+rostrum: {
+    meaning: "a raised platform from which someone makes a speech; a lectern or speaking platform",
+    example: "The speaker walked up to the rostrum."
+},
+
+rota: {
+    meaning: "a schedule showing when different people must perform particular duties",
+    example: "The students made a cleaning rota."
+},
+
+rotor: {
+    meaning: "the rotating part of a machine; the rotating blades of a helicopter",
+    example: "The helicopter's rotor began to turn."
+},
+
+rouge: {
+    meaning: "a red cosmetic used on the cheeks or lips; to apply red cosmetic to something",
+    example: "She used a little rouge on her cheeks."
+},
+
+roughen: {
+    meaning: "to make something rough or uneven",
+    example: "Sandpaper can roughen the surface of the wood."
+},
+
+roulette: {
+    meaning: "a gambling game in which a small ball is rolled around a spinning wheel",
+    example: "They watched the roulette wheel spin."
+},
+
+rounders: {
+    meaning: "a British game similar to baseball, played with a bat and ball",
+    example: "The students played rounders on the sports field."
+},
+
+rouse: {
+    meaning: "to wake someone from sleep; to encourage or stimulate someone; to cause a feeling or reaction",
+    example: "The speech roused the students to action."
+},
+
+rove: {
+    meaning: "to wander from place to place; to move one's eyes around while looking at something",
+    example: "His eyes roved around the crowded room."
+},
+
+rover: {
+    meaning: "a person who wanders or travels from place to place",
+    example: "He lived as a rover for several years."
+},
+
+rowdy: {
+    meaning: "noisy, disorderly, and difficult to control",
+    example: "A group of rowdy fans caused trouble outside the stadium."
+},
+
+royalist: {
+    meaning: "a person who supports a king, queen, or monarchy",
+    example: "The royalists supported the restoration of the monarchy."
+},
+
+rubble: {
+    meaning: "broken pieces of stone, brick, or other building materials",
+    example: "The workers cleared the rubble from the street."
+},
+
+rubdown: {
+    meaning: "the act of rubbing someone or something dry; the act of rubbing or polishing a surface smooth",
+    example: "The horse was given a rubdown after the race."
+},
+
+rucksack: {
+    meaning: "a backpack, especially one used for hiking or traveling",
+    example: "He carried his books in a large rucksack."
+},
+
+ruddy: {
+    meaning: "having a healthy red color in the face; reddish or light red",
+    example: "The farmer had a ruddy face after working outdoors."
+},
+
+rudimentary: {
+    meaning: "basic and not fully developed; at an early or simple stage of development",
+    example: "The students have only a rudimentary understanding of programming."
+},
+
+rue1: {
+    meaning: "a small evergreen plant with a strong smell",
+    example: "Rue has been used as a medicinal plant for centuries."
+},
+
+rue2: {
+    meaning: "to feel sorry about something that happened or something one did",
+    example: "She later rued her decision to leave the job."
+},
+
+rueful: {
+    meaning: "showing or feeling regret",
+    example: "He gave a rueful smile after realizing his mistake."
+},
+
+ruffian: {
+    meaning: "a violent and lawless person; a thug or criminal",
+    example: "A group of ruffians attacked the travelers."
+},
+
+ruffle: {
+    meaning: "to make something wrinkled or uneven; to annoy, disturb, or upset someone",
+    example: "The criticism did not ruffle her confidence."
+},
+
+rugger: {
+    meaning: "rugby, especially in British English",
+    example: "He played rugger at university."
+},
+
+ruinous: {
+    meaning: "causing great damage or destruction; likely to cause financial ruin",
+    example: "The company suffered a ruinous financial loss."
+},
+
+ruling: {
+    meaning: "having control or power; a decision or judgment made by a court or authority",
+    example: "The court issued a ruling on the case."
+},
+
+rum: {
+    meaning: "a strong alcoholic drink made from sugarcane",
+    example: "He ordered a glass of rum."
+},
+
+rumble: {
+    meaning: "to make a continuous low deep sound; to move with a low continuous sound; a low continuous sound; a street fight involving a group of people",
+    example: "Thunder rumbled in the distance."
+},
+
+rummage: {
+    meaning: "to search through things in a careless or untidy way; a thorough search through a collection of things",
+    example: "She rummaged through her bag looking for her keys."
+},
+
+runaway: {
+    meaning: "having escaped or run away; out of control, especially describing an animal or vehicle",
+    example: "The police caught the runaway horse."
+},
+
+rupture: {
+    meaning: "a break or tear; a serious breakdown in a friendly relationship; a hernia; to break or tear; to cause a relationship to break down",
+    example: "The incident caused a rupture in their friendship."
+},
+
+russet: {
+    meaning: "a soft reddish-brown color; an apple with rough reddish-brown skin",
+    example: "The leaves turned a beautiful russet color in autumn."
+},
+
+rustle: {
+    meaning: "to make or cause something to make a soft dry sound; to move with a soft rustling sound; a soft dry sound",
+    example: "The leaves rustled in the wind."
+},
+
+rut: {
+    meaning: "a long deep track made by the wheels of vehicles; a fixed and boring way of living or doing things",
+    example: "He felt that he was stuck in a rut."
+},
+
+"be stuck in a rut": {
+    meaning: "to be trapped in a boring and unchanging way of life",
+    example: "He felt stuck in a rut."
+},
+
+"get into a rut": {
+    meaning: "to begin living or working in a fixed and boring routine",
+    example: "I don't want to get into a rut."
+},
+
+"get out of a rut": {
+    meaning: "to escape from a boring and unchanging routine",
+    example: "Traveling can help you get out of a rut."
+},
 };
 
 // ======================================================
@@ -2137,12 +2801,8 @@ function shuffle(array) {
 }
 
 
-// ======================================================
-// GENERATE 100 RANDOM QUIZ QUESTIONS
-// ======================================================
 
-function generateQuizQuestions(numberOfQuestions = 292) {
-
+function generateQuizQuestions(numberOfQuestions = Object.keys(vocabulary).length) {
     const allWords = Object.entries(vocabulary);
 
     // Randomly select vocabulary items
@@ -2377,7 +3037,57 @@ let currentQuestion = 0;
 let correctAnswers = 0;
 let score = 0;
 let questionResults = [];
+// ======================================================
+// SAVE / LOAD QUIZ PROGRESS
+// ======================================================
 
+const QUIZ_STORAGE_KEY = "englishQuizProgress";
+
+function saveQuizProgress() {
+    localStorage.setItem(
+        QUIZ_STORAGE_KEY,
+        JSON.stringify({
+            questions: questions,
+            currentQuestion: currentQuestion,
+            correctAnswers: correctAnswers,
+            score: score,
+            questionResults: questionResults
+        })
+    );
+}
+
+function loadQuizProgress() {
+
+const saved = localStorage.getItem(QUIZ_STORAGE_KEY);
+
+if (!saved) {
+    return false;
+}
+
+try {
+
+    const data = JSON.parse(saved);
+
+    // Restore the same questions
+    questions.length = 0;
+    questions.push(...data.questions);
+
+    currentQuestion = data.currentQuestion || 0;
+    correctAnswers = data.correctAnswers || 0;
+    score = data.score || 0;
+    questionResults = data.questionResults || [];
+
+    return true;
+
+} catch (error) {
+
+    console.error("Could not load quiz progress:", error);
+
+    localStorage.removeItem(QUIZ_STORAGE_KEY);
+
+    return false;
+}
+}
 // ======================================================
 // DISPLAY QUESTION
 // ======================================================
@@ -2464,6 +3174,7 @@ function checkAnswer(selectedIndex, button) {
     if (selectedIndex + 1 === question.answer) {
 
 questionResults[currentQuestion] = 1;
+saveQuizProgress();
 
 score = questionResults.reduce(
     (total, mark) => total + mark,
@@ -2550,13 +3261,15 @@ function previousQuestion() {
 
     if (currentQuestion > 0) {
 
-        currentQuestion--;
+currentQuestion--;
 
-        displayQuestion();
-    }
+saveQuizProgress();
+
+displayQuestion();
+}
 }
 
-
+document.getElementById("prevButton").addEventListener("click", previousQuestion);
 // ======================================================
 // GO TO NEXT QUESTION (OR FINISH)
 // ======================================================
@@ -2565,10 +3278,12 @@ function goToNextOrFinish() {
 
     if (currentQuestion < questions.length - 1) {
 
-        currentQuestion++;
+currentQuestion++;
 
-        displayQuestion();
-    }
+saveQuizProgress();
+
+displayQuestion();
+}
 
     else {
 
@@ -2582,6 +3297,7 @@ function goToNextOrFinish() {
 
 function restartQuiz() {
 
+localStorage.removeItem(QUIZ_STORAGE_KEY);
 currentQuestion = 0;
 
 correctAnswers = 0;
@@ -2652,11 +3368,11 @@ totalQuestions +
 // ======================================================
 // START QUIZ
 // ======================================================
-
 if (questions.length > 0) {
 
-    displayQuestion();
+loadQuizProgress();
 
+displayQuestion();
 }
 
 else {
